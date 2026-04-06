@@ -1,9 +1,9 @@
 /*
-Theme Name: Envosta Base
+Theme Name: Envosta
 Theme URI: https://envosta.com
 Author: Envosta
 Author URI: https://envosta.com
-Description: Base FSE WordPress theme by Envosta. Design tokens are set via theme.json and customized per client by the Envosta AI Plugin.
+Description: Unified FSE WordPress theme for all Envosta-managed sites. Design tokens live in theme.json and are overridden per client by the Envosta plugin via envosta-site-config.json. Auto-updates from GitHub.
 Version: 1.0.0
 Requires at least: 6.4
 Tested up to: 6.7
