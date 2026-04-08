@@ -1,26 +1,8 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","backgroundColor":"bg","style":{"spacing":{"padding":{"top":"var:preset|spacing|32","bottom":"var:preset|spacing|32"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group has-bg-background-color has-background">
-
-  <!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","alignItems":"center"},"style":{"spacing":{"blockGap":"var:preset|spacing|6"}}} -->
-  <div class="wp-block-group">
-    <!-- wp:heading {"textAlign":"center","level":1,"fontSize":"hero"} -->
-    <h1 class="wp-block-heading has-text-align-center has-hero-font-size">404</h1>
-    <!-- /wp:heading -->
-    <!-- wp:paragraph {"align":"center","style":{"color":{"text":"var:preset|color|text-muted"}},"fontSize":"lg"} -->
-    <p class="has-text-align-center has-text-color has-lg-font-size" style="color:var(--wp--preset--color--text-muted)">The page you're looking for doesn't exist or has been moved.</p>
-    <!-- /wp:paragraph -->
-    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-    <div class="wp-block-buttons">
-      <!-- wp:button {"backgroundColor":"cta","textColor":"text-light","style":{"border":{"radius":"9999px"}}} -->
-      <div class="wp-block-button"><a class="wp-block-button__link has-cta-background-color has-text-light-color has-background has-text-color wp-element-button" href="/">Back to Home</a></div>
-      <!-- /wp:button -->
-    </div>
-    <!-- /wp:buttons -->
-  </div>
-  <!-- /wp:group -->
-
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group">
+  <!-- wp:pattern {"slug":"envosta/hidden-404"} /-->
 </main>
 <!-- /wp:group -->
 

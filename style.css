@@ -3,11 +3,42 @@ Theme Name: Envosta
 Theme URI: https://envosta.com
 Author: Envosta
 Author URI: https://envosta.com
-Description: Unified FSE WordPress theme for all Envosta-managed sites. Design tokens in theme.json, client customizations via Global Styles. Auto-updates from GitHub.
+Description: Unified FSE block theme for Envosta-managed WordPress sites. Semantic design tokens in theme.json, section block styles, bundled fonts. Designed as a parent theme — client customizations via child themes and WXR content imports. Auto-updates from GitHub.
 Version: 1.0.0
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.0
 License: Proprietary
 Text Domain: envosta
+Tags: one-column, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, block-patterns, block-styles, style-variations, template-editing, wide-blocks
 */
+
+/* Button transitions */
+.wp-block-button .wp-block-button__link {
+	transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+/* Link styling */
+a {
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: 0.15em;
+}
+
+/* Focus styles */
+.wp-site-blocks *:focus {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* Text wrapping */
+h1, h2, h3, h4, h5, h6,
+blockquote,
+figcaption,
+p {
+	text-wrap: pretty;
+}
+
+/* XX-Large heading line height */
+.has-xx-large-font-size {
+	line-height: 1.1;
+}

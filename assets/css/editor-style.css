@@ -1,0 +1,9 @@
+/* Editor parity styles */
+a {
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: 0.15em;
+}
+
+.has-xx-large-font-size {
+	line-height: 1.1;
+}
