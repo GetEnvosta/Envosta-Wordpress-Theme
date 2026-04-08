@@ -200,6 +200,22 @@
             }
           }
         }
+      },
+      "woocommerce/checkout": {
+        "color": {
+          "background": "var(--wp--preset--color--base)"
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)"
+        }
+      },
+      "woocommerce/cart": {
+        "color": {
+          "background": "var(--wp--preset--color--base)"
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)"
+        }
       }
     }
   },

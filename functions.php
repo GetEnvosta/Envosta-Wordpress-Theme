@@ -16,6 +16,9 @@ if ( ! function_exists( 'envosta_setup' ) ) {
 			'flex-width'  => true,
 		] );
 		add_editor_style( 'assets/css/editor-style.css' );
+
+		// WooCommerce support.
+		add_theme_support( 'woocommerce' );
 	}
 }
 add_action( 'after_setup_theme', 'envosta_setup' );
