@@ -41,8 +41,8 @@
       );
     ?> <?php printf(
       /* translators: %s: Envosta link */
-      esc_html_x( 'Built by %s.', 'Footer credit', 'envosta' ),
-      '<a href="https://envosta.com">Envosta</a>'
+      esc_html_x( 'Powered by %s', 'Footer credit', 'envosta' ),
+      '<a href="https://envosta.com" style="text-decoration:underline">Envosta</a>'
     ); ?></p>
     <!-- /wp:paragraph -->
   </div>

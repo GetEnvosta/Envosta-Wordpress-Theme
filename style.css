@@ -4,9 +4,9 @@ Theme URI: https://envosta.com
 Author: Envosta
 Author URI: https://envosta.com
 Description: Unified FSE block theme for Envosta-managed WordPress sites. Semantic design tokens in theme.json, section block styles, bundled fonts. Designed as a parent theme — client customizations via child themes and WXR content imports. Auto-updates from GitHub.
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.4
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 8.0
 License: Proprietary
 Text Domain: envosta
@@ -41,6 +41,35 @@ p {
 /* XX-Large heading line height */
 .has-xx-large-font-size {
 	line-height: 1.1;
+}
+
+/* Card hover — baseline utility */
+.envosta-card-hover {
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.envosta-card-hover:hover {
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+/* Scroll reveal — baseline (requires JS observer) */
+.envosta-reveal {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.envosta-reveal.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.envosta-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
 }
 
 /* =========================================

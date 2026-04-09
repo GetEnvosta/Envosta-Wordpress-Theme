@@ -16,7 +16,9 @@
         { "slug": "base-soft",    "color": "#f8f8f6",  "name": "Base Soft" },
         { "slug": "contrast",     "color": "#111111",  "name": "Contrast" },
         { "slug": "accent",       "color": "#1a6b3a",  "name": "Accent" },
-        { "slug": "accent-hover", "color": "#145a30",  "name": "Accent Hover" }
+        { "slug": "accent-hover", "color": "#145a30",  "name": "Accent Hover" },
+        { "slug": "muted",        "color": "#6b6b6b",  "name": "Muted" },
+        { "slug": "border",       "color": "#e5e5e5",  "name": "Border" }
       ]
     },
     "typography": {
@@ -53,11 +55,13 @@
         }
       ],
       "fontSizes": [
-        { "slug": "small",    "size": "0.875rem",                    "name": "Small" },
-        { "slug": "medium",   "size": "1rem",                        "name": "Medium" },
-        { "slug": "large",    "size": "1.5rem",                      "name": "Large",   "fluid": { "min": "1.25rem",  "max": "1.5rem" } },
-        { "slug": "x-large",  "size": "2.75rem",                     "name": "X-Large", "fluid": { "min": "2rem",     "max": "2.75rem" } },
-        { "slug": "xx-large", "size": "clamp(2.5rem, 6vw, 5rem)",    "name": "XX-Large" }
+        { "slug": "x-small",      "size": "0.75rem",                     "name": "X-Small" },
+        { "slug": "small",        "size": "0.875rem",                    "name": "Small" },
+        { "slug": "medium",       "size": "1rem",                        "name": "Medium" },
+        { "slug": "medium-large", "size": "1.125rem",                    "name": "Medium Large", "fluid": { "min": "1rem", "max": "1.125rem" } },
+        { "slug": "large",        "size": "1.5rem",                      "name": "Large",        "fluid": { "min": "1.25rem", "max": "1.5rem" } },
+        { "slug": "x-large",      "size": "2.75rem",                     "name": "X-Large",      "fluid": { "min": "2rem", "max": "2.75rem" } },
+        { "slug": "xx-large",     "size": "clamp(2.5rem, 6vw, 5rem)",    "name": "XX-Large" }
       ]
     },
     "spacing": {
@@ -83,7 +87,13 @@
       "radius": true,
       "color": true,
       "style": true,
-      "width": true
+      "width": true,
+      "radiusSizes": [
+        { "name": "Small",  "slug": "small",  "size": "4px" },
+        { "name": "Medium", "slug": "medium", "size": "8px" },
+        { "name": "Large",  "slug": "large",  "size": "16px" },
+        { "name": "Pill",   "slug": "pill",   "size": "9999px" }
+      ]
     },
     "blocks": {
       "core/button": {
@@ -132,6 +142,12 @@
           "fontWeight": "600"
         }
       },
+      "h4": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--medium-large)",
+          "fontWeight": "600"
+        }
+      },
       "button": {
         "color": {
           "background": "var(--wp--preset--color--accent)",
@@ -157,11 +173,43 @@
           "color": {
             "background": "var(--wp--preset--color--accent-hover)"
           }
+        },
+        ":focus": {
+          "color": {
+            "background": "var(--wp--preset--color--accent-hover)"
+          },
+          "border": {
+            "color": "var(--wp--preset--color--accent)",
+            "width": "2px"
+          }
         }
       },
       "link": {
         "color": {
           "text": "currentColor"
+        }
+      },
+      "input": {
+        "border": {
+          "color": "var(--wp--preset--color--border)",
+          "width": "1px",
+          "radius": "8px"
+        },
+        "color": {
+          "background": "var(--wp--preset--color--base)",
+          "text": "var(--wp--preset--color--contrast)"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.875rem",
+            "bottom": "0.875rem",
+            "left": "1rem",
+            "right": "1rem"
+          }
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)",
+          "fontSize": "var(--wp--preset--font-size--medium)"
         }
       }
     },

@@ -8,6 +8,17 @@ a {
 	line-height: 1.1;
 }
 
+/* Card hover in editor */
+.envosta-card-hover {
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Reveal elements should be visible in editor */
+.envosta-reveal {
+	opacity: 1;
+	transform: none;
+}
+
 /* WooCommerce editor parity */
 .wc-block-checkout input[type="text"],
 .wc-block-checkout input[type="email"],
