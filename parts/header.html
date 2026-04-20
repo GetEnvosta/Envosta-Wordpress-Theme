@@ -1,1 +1,32 @@
-<!-- wp:pattern {"slug":"envosta/hidden-header"} /-->
+<!-- wp:group {"tagName":"header","align":"full","className":"envosta-header","style":{"spacing":{"padding":{"top":"1rem","right":"2rem","bottom":"1rem","left":"2rem"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+<header class="wp-block-group alignfull envosta-header" style="padding-top:1rem;padding-right:2rem;padding-bottom:1rem;padding-left:2rem">
+
+	<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"},"style":{"spacing":{"blockGap":"2rem"}}} -->
+	<div class="wp-block-group">
+
+		<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"0.75rem"}}} -->
+		<div class="wp-block-group">
+			<!-- wp:site-logo {"width":40} /-->
+			<!-- wp:site-title {"level":0} /-->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:navigation {"className":"is-style-envosta-menu-classic","layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"right"},"style":{"spacing":{"blockGap":"2rem"}}} /-->
+
+		<!-- wp:group {"className":"envosta-header-actions","layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"1rem"}}} -->
+		<div class="wp-block-group envosta-header-actions">
+			<!-- wp:search {"label":"","showLabel":false,"placeholder":"Search","buttonText":"","buttonPosition":"button-only","buttonUseIcon":true,"className":"envosta-search-icon"} /-->
+			<!-- wp:html -->
+			<a href="#envosta-cart-drawer" class="envosta-cart-trigger" data-envosta-cart-open aria-label="Open cart">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+				<span class="envosta-cart-count" data-envosta-cart-count>0</span>
+			</a>
+			<!-- /wp:html -->
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+</header>
+<!-- /wp:group -->

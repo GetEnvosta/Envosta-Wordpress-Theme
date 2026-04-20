@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Ocean",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base",          "name": "Base",          "color": "#f8fafb" },
+				{ "slug": "base-2",        "name": "Base Alt",      "color": "#eaf2f5" },
+				{ "slug": "contrast",      "name": "Contrast",      "color": "#0a1929" },
+				{ "slug": "contrast-2",   "name": "Contrast Alt",  "color": "#18344f" },
+				{ "slug": "contrast-3",   "name": "Contrast Soft", "color": "#3a5a7a" },
+				{ "slug": "primary",       "name": "Primary",       "color": "#0a1929" },
+				{ "slug": "primary-alt",  "name": "Primary Alt",   "color": "#0e4b6f" },
+				{ "slug": "accent",        "name": "Accent",        "color": "#0891b2" },
+				{ "slug": "accent-hover", "name": "Accent Hover",  "color": "#0e7490" },
+				{ "slug": "accent-soft",  "name": "Accent Soft",   "color": "#cffafe" },
+				{ "slug": "muted",         "name": "Muted",         "color": "#607d9b" },
+				{ "slug": "border",        "name": "Border",        "color": "#d6e1ea" },
+				{ "slug": "success",       "name": "Success",       "color": "#059669" },
+				{ "slug": "warning",       "name": "Warning",       "color": "#ea9a2a" },
+				{ "slug": "danger",        "name": "Danger",        "color": "#dc2626" }
+			]
+		}
+	}
+}

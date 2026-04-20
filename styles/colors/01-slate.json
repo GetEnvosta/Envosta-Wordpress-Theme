@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Slate",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base",          "name": "Base",          "color": "#ffffff" },
+				{ "slug": "base-2",        "name": "Base Alt",      "color": "#f7f7f5" },
+				{ "slug": "contrast",      "name": "Contrast",      "color": "#0f172a" },
+				{ "slug": "contrast-2",   "name": "Contrast Alt",  "color": "#1e293b" },
+				{ "slug": "contrast-3",   "name": "Contrast Soft", "color": "#475569" },
+				{ "slug": "primary",       "name": "Primary",       "color": "#0f172a" },
+				{ "slug": "primary-alt",  "name": "Primary Alt",   "color": "#1e293b" },
+				{ "slug": "accent",        "name": "Accent",        "color": "#2563eb" },
+				{ "slug": "accent-hover", "name": "Accent Hover",  "color": "#1d4ed8" },
+				{ "slug": "accent-soft",  "name": "Accent Soft",   "color": "#dbeafe" },
+				{ "slug": "muted",         "name": "Muted",         "color": "#64748b" },
+				{ "slug": "border",        "name": "Border",        "color": "#e2e8f0" },
+				{ "slug": "success",       "name": "Success",       "color": "#10b981" },
+				{ "slug": "warning",       "name": "Warning",       "color": "#f59e0b" },
+				{ "slug": "danger",        "name": "Danger",        "color": "#dc2626" }
+			]
+		}
+	}
+}
