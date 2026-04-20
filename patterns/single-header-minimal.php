@@ -26,7 +26,7 @@
 	<!-- /wp:group -->
 
 	<!-- wp:separator {"style":{"spacing":{"margin":{"top":"0","bottom":"3rem"}}},"backgroundColor":"border","className":"is-style-default"} -->
-	<hr class="wp-block-separator has-text-color has-border-color has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:0;margin-bottom:3rem"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:0;margin-bottom:3rem"/>
 	<!-- /wp:separator -->
 
 	<!-- wp:post-featured-image {"aspectRatio":"16/9","style":{"border":{"radius":"16px"}}} /-->

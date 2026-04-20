@@ -20,7 +20,7 @@
 	<!-- wp:term-description {"textAlign":"center","style":{"typography":{"fontSize":"1.1rem","lineHeight":"1.65"}},"textColor":"muted"} /-->
 
 	<!-- wp:separator {"style":{"spacing":{"margin":{"top":"3rem","bottom":"0"}}},"backgroundColor":"border","className":"is-style-default"} -->
-	<hr class="wp-block-separator has-text-color has-border-color has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:3rem;margin-bottom:0"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:3rem;margin-bottom:0"/>
 	<!-- /wp:separator -->
 </div>
 <!-- /wp:group -->

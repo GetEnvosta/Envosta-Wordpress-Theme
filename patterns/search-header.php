@@ -22,7 +22,7 @@
 	<!-- /wp:paragraph -->
 
 	<!-- wp:separator {"style":{"spacing":{"margin":{"top":"2.5rem","bottom":"0"}}},"backgroundColor":"border","className":"is-style-default"} -->
-	<hr class="wp-block-separator has-text-color has-border-color has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:2.5rem;margin-bottom:0"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-default" style="margin-top:2.5rem;margin-bottom:0"/>
 	<!-- /wp:separator -->
 </div>
 <!-- /wp:group -->

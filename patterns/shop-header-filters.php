@@ -56,7 +56,7 @@ $envosta_filters = array(
 	<!-- /wp:group -->
 
 	<!-- wp:separator {"style":{"spacing":{"margin":{"top":"2.5rem","bottom":"0"}}},"backgroundColor":"border","className":"is-style-wide"} -->
-	<hr class="wp-block-separator has-text-color has-border-background-color has-alpha-channel-opacity has-border-color has-background is-style-wide" style="margin-top:2.5rem;margin-bottom:0"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-wide" style="margin-top:2.5rem;margin-bottom:0"/>
 	<!-- /wp:separator -->
 </div>
 <!-- /wp:group -->

@@ -23,8 +23,8 @@
 	<p class="has-text-align-center has-muted-color has-text-color" style="margin-right:auto;margin-left:auto;font-size:1.2rem;line-height:1.65"><?php esc_html_e( 'We work with a handful of clients each year on the kind of problems that deserve real attention. Here is what we believe, how we work, and who we work with.', 'envosta' ); ?></p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:separator {"className":"is-style-wide","style":{"spacing":{"margin":{"top":"3.5rem","bottom":"0"}},"color":{"background":"var:preset|color|border"}}} -->
-	<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:var(--wp--preset--color--border);margin-top:3.5rem;margin-bottom:0"/>
+	<!-- wp:separator {"className":"is-style-wide","style":{"spacing":{"margin":{"top":"3.5rem","bottom":"0"}}},"backgroundColor":"border"} -->
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-wide" style="margin-top:3.5rem;margin-bottom:0"/>
 	<!-- /wp:separator -->
 
 </div>

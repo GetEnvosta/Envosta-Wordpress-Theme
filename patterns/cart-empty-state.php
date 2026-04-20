@@ -12,17 +12,14 @@ $envosta_featured = array(
 	array(
 		'title' => __( 'The Everyday Tee', 'envosta' ),
 		'price' => __( '$38', 'envosta' ),
-		'img'   => 'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23fecdd3"/><stop offset="100%" stop-color="%23fb7185"/></linearGradient></defs><rect width="400" height="400" fill="url(%23g)"/></svg>' ),
 	),
 	array(
 		'title' => __( 'Merino Crew', 'envosta' ),
 		'price' => __( '$98', 'envosta' ),
-		'img'   => 'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23bfdbfe"/><stop offset="100%" stop-color="%236366f1"/></linearGradient></defs><rect width="400" height="400" fill="url(%23g)"/></svg>' ),
 	),
 	array(
 		'title' => __( 'Canvas Tote', 'envosta' ),
 		'price' => __( '$52', 'envosta' ),
-		'img'   => 'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23d1fae5"/><stop offset="100%" stop-color="%2310b981"/></linearGradient></defs><rect width="400" height="400" fill="url(%23g)"/></svg>' ),
 	),
 );
 ?>
@@ -68,9 +65,9 @@ $envosta_featured = array(
 		<?php foreach ( $envosta_featured as $item ) : ?>
 		<!-- wp:column {"className":"envosta-card envosta-card-hover","style":{"border":{"radius":"14px","width":"1px"},"spacing":{"padding":"0"}},"borderColor":"border"} -->
 		<div class="wp-block-column envosta-card envosta-card-hover has-border-color has-border-border-color" style="border-width:1px;border-radius:14px;padding:0;overflow:hidden">
-			<!-- wp:image {"aspectRatio":"1","scale":"cover"} -->
-			<figure class="wp-block-image"><img src="<?php echo esc_url( $item['img'] ); ?>" alt="" style="aspect-ratio:1;object-fit:cover;width:100%"/></figure>
-			<!-- /wp:image -->
+			<!-- wp:group {"style":{"dimensions":{"aspectRatio":"1"}},"backgroundColor":"base-2"} -->
+			<div class="wp-block-group has-base-2-background-color has-background" style="aspect-ratio:1"></div>
+			<!-- /wp:group -->
 			<!-- wp:group {"style":{"spacing":{"padding":{"top":"1rem","right":"1rem","bottom":"1.25rem","left":"1rem"},"blockGap":"0.25rem"}}} -->
 			<div class="wp-block-group" style="padding:1rem 1rem 1.25rem">
 				<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","fontWeight":"600","letterSpacing":"-0.01em"}}} -->

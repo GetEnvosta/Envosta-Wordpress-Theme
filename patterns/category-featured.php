@@ -7,10 +7,6 @@
  * Description: Editorial two-column row pairing a large gradient image card with a right-side featured collection callout.
  * Viewport Width: 1440
  */
-
-$envosta_editorial = 'data:image/svg+xml;utf8,' . rawurlencode(
-	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23fde68a"/><stop offset="50%" stop-color="%23fb923c"/><stop offset="100%" stop-color="%23be123c"/></linearGradient></defs><rect width="800" height="1000" fill="url(%23g)"/><circle cx="200" cy="800" r="220" fill="%23ffffff" fill-opacity="0.22"/><circle cx="620" cy="260" r="140" fill="%23ffffff" fill-opacity="0.18"/></svg>'
-);
 ?>
 <!-- wp:group {"align":"full","className":"envosta-reveal","style":{"spacing":{"padding":{"top":"5rem","right":"2rem","bottom":"5rem","left":"2rem"}}},"layout":{"type":"constrained","contentSize":"1240px"}} -->
 <div class="wp-block-group alignfull envosta-reveal" style="padding-top:5rem;padding-right:2rem;padding-bottom:5rem;padding-left:2rem">
@@ -20,9 +16,9 @@ $envosta_editorial = 'data:image/svg+xml;utf8,' . rawurlencode(
 
 		<!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
-			<!-- wp:image {"aspectRatio":"4/5","scale":"cover","style":{"border":{"radius":"16px"}},"className":"envosta-card-hover"} -->
-			<figure class="wp-block-image envosta-card-hover has-custom-border"><img src="<?php echo esc_url( $envosta_editorial ); ?>" alt="" style="border-radius:16px;aspect-ratio:4/5;object-fit:cover;width:100%"/></figure>
-			<!-- /wp:image -->
+			<!-- wp:group {"className":"envosta-card-hover","style":{"border":{"radius":"16px"},"dimensions":{"aspectRatio":"4/5"}},"backgroundColor":"base-2"} -->
+			<div class="wp-block-group envosta-card-hover has-base-2-background-color has-background" style="border-radius:16px;aspect-ratio:4/5"></div>
+			<!-- /wp:group -->
 		</div>
 		<!-- /wp:column -->
 

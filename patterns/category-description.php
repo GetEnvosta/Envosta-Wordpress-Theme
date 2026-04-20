@@ -7,12 +7,6 @@
  * Description: Two-column category intro with query title and term description on the left, three stacked gradient panels on the right.
  * Viewport Width: 1440
  */
-
-$envosta_panels = array(
-	'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23fecaca"/><stop offset="100%" stop-color="%23f97316"/></linearGradient></defs><rect width="600" height="400" fill="url(%23a)"/><circle cx="460" cy="120" r="90" fill="%23ffffff" fill-opacity="0.35"/></svg>' ),
-	'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="100%" stop-color="%230ea5e9"/></linearGradient></defs><rect width="600" height="400" fill="url(%23a)"/><rect x="80" y="120" width="280" height="200" rx="18" fill="%23ffffff" fill-opacity="0.3"/></svg>' ),
-	'data:image/svg+xml;utf8,' . rawurlencode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23d9f99d"/><stop offset="100%" stop-color="%2365a30d"/></linearGradient></defs><rect width="600" height="400" fill="url(%23a)"/><circle cx="180" cy="280" r="120" fill="%23ffffff" fill-opacity="0.28"/></svg>' ),
-);
 ?>
 <!-- wp:group {"align":"full","className":"envosta-reveal","style":{"spacing":{"padding":{"top":"5rem","right":"2rem","bottom":"5rem","left":"2rem"}}},"layout":{"type":"constrained","contentSize":"1240px"}} -->
 <div class="wp-block-group alignfull envosta-reveal" style="padding-top:5rem;padding-right:2rem;padding-bottom:5rem;padding-left:2rem">
@@ -34,11 +28,15 @@ $envosta_panels = array(
 		<div class="wp-block-column" style="flex-basis:60%">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"1rem"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 			<div class="wp-block-group">
-				<?php foreach ( $envosta_panels as $panel ) : ?>
-				<!-- wp:image {"aspectRatio":"21/9","scale":"cover","style":{"border":{"radius":"14px"}},"className":"envosta-card-hover"} -->
-				<figure class="wp-block-image envosta-card-hover has-custom-border"><img src="<?php echo esc_url( $panel ); ?>" alt="" style="border-radius:14px;aspect-ratio:21/9;object-fit:cover;width:100%"/></figure>
-				<!-- /wp:image -->
-				<?php endforeach; ?>
+				<!-- wp:group {"className":"envosta-card-hover","style":{"border":{"radius":"14px"},"dimensions":{"aspectRatio":"21/9"}},"backgroundColor":"base-2"} -->
+				<div class="wp-block-group envosta-card-hover has-base-2-background-color has-background" style="border-radius:14px;aspect-ratio:21/9"></div>
+				<!-- /wp:group -->
+				<!-- wp:group {"className":"envosta-card-hover","style":{"border":{"radius":"14px"},"dimensions":{"aspectRatio":"21/9"}},"backgroundColor":"base-2"} -->
+				<div class="wp-block-group envosta-card-hover has-base-2-background-color has-background" style="border-radius:14px;aspect-ratio:21/9"></div>
+				<!-- /wp:group -->
+				<!-- wp:group {"className":"envosta-card-hover","style":{"border":{"radius":"14px"},"dimensions":{"aspectRatio":"21/9"}},"backgroundColor":"base-2"} -->
+				<div class="wp-block-group envosta-card-hover has-base-2-background-color has-background" style="border-radius:14px;aspect-ratio:21/9"></div>
+				<!-- /wp:group -->
 			</div>
 			<!-- /wp:group -->
 		</div>

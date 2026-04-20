@@ -20,7 +20,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:separator {"className":"is-style-wide","style":{"spacing":{"margin":{"top":"0","bottom":"2rem"}}},"backgroundColor":"border"} -->
-	<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-border-background-color has-background is-style-wide" style="margin-top:0;margin-bottom:2rem"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-border-background-color has-background is-style-wide" style="margin-top:0;margin-bottom:2rem"/>
 	<!-- /wp:separator -->
 
 	<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1rem","fontWeight":"600","letterSpacing":"-0.005em"}}} -->

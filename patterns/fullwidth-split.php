@@ -13,8 +13,8 @@
 
 	<!-- wp:column {"width":"50%","className":"envosta-reveal","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}}} -->
 	<div class="wp-block-column envosta-reveal" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;flex-basis:50%">
-		<!-- wp:group {"style":{"dimensions":{"minHeight":"620px"}},"backgroundColor":"base-2"} -->
-		<div class="wp-block-group has-base-2-background-color has-background" style="min-height:620px;background:linear-gradient(135deg, #c7d2fe 0%, #a78bfa 50%, #f472b6 100%)"></div>
+		<!-- wp:group {"style":{"dimensions":{"minHeight":"620px"}}} -->
+		<div class="wp-block-group" style="min-height:620px;background:linear-gradient(135deg, #c7d2fe 0%, #a78bfa 50%, #f472b6 100%)"></div>
 		<!-- /wp:group -->
 	</div>
 	<!-- /wp:column -->

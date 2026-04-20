@@ -28,7 +28,7 @@
 	<!-- /wp:paragraph -->
 
 	<!-- wp:separator {"className":"is-style-wide","style":{"spacing":{"margin":{"top":"3.5rem","bottom":"3rem"}},"color":{"background":"rgba(255,255,255,0.12)"}}} -->
-	<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:rgba(255,255,255,0.12);margin-top:3.5rem;margin-bottom:3rem"/>
+	<hr class="wp-block-separator has-alpha-channel-opacity has-background is-style-wide" style="background-color:rgba(255,255,255,0.12);margin-top:3.5rem;margin-bottom:3rem"/>
 	<!-- /wp:separator -->
 
 	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
