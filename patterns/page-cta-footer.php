@@ -3,6 +3,7 @@
  * Title: Page — Closing CTA
  * Slug: envosta/page-cta-footer
  * Categories: envosta-page
+ * Template Types: page
  * Description: End-of-page CTA band with centered heading, subhead, and accent pill button.
  * Viewport Width: 1440
  */

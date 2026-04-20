@@ -3,6 +3,7 @@
  * Title: Archive — Editorial Header
  * Slug: envosta/archive-header-editorial
  * Categories: envosta-archive
+ * Template Types: archive, category, tag, author, date
  * Description: Magazine-style archive header with issue eyebrow, large heading, and two-column description.
  * Viewport Width: 1440
  */

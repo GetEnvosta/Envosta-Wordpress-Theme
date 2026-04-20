@@ -3,6 +3,7 @@
  * Title: Checkout — Steps Header
  * Slug: envosta/checkout-steps-header
  * Categories: envosta-checkout
+ * Template Types: page-checkout
  * Description: Horizontal three-step indicator (Cart → Information → Payment) with current step filled in accent.
  * Viewport Width: 1440
  */

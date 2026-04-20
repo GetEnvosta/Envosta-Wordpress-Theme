@@ -3,6 +3,7 @@
  * Title: Page — Split Intro
  * Slug: envosta/page-intro-split
  * Categories: envosta-page
+ * Template Types: page
  * Description: Two-column page intro with oversized heading and supporting paragraph plus proof-point list.
  * Viewport Width: 1440
  */

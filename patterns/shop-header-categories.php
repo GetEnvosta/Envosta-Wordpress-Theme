@@ -3,6 +3,7 @@
  * Title: Shop — Category Pills
  * Slug: envosta/shop-header-categories
  * Categories: envosta-shop
+ * Template Types: archive-product
  * Description: Centered shop header with eyebrow, headline, subhead and six rounded category pill links.
  * Viewport Width: 1440
  */

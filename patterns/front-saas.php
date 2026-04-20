@@ -3,6 +3,7 @@
  * Title: Front Page — SaaS Composition
  * Slug: envosta/front-saas
  * Categories: envosta-hero
+ * Template Types: front-page
  * Description: SaaS landing with announcement pill, centered hero, inline signup, and product mockup card.
  * Viewport Width: 1440
  */

@@ -3,6 +3,7 @@
  * Title: Category — Banner Header
  * Slug: envosta/category-banner
  * Categories: envosta-shop
+ * Template Types: taxonomy-product_cat
  * Description: Full-width product category banner with gradient cover, large query title and term description.
  * Viewport Width: 1440
  */

@@ -3,6 +3,7 @@
  * Title: Single — Cover Header
  * Slug: envosta/single-header-cover
  * Categories: envosta-single
+ * Template Types: single
  * Description: Full-bleed cover hero using the featured image with overlayed post title and date in white.
  * Viewport Width: 1440
  */

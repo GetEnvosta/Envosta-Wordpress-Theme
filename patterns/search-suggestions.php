@@ -3,6 +3,7 @@
  * Title: Search — Suggestions
  * Slug: envosta/search-suggestions
  * Categories: envosta-search
+ * Template Types: search
  * Description: Full search experience with large input, popular search pills, and featured post cards.
  * Viewport Width: 1440
  */

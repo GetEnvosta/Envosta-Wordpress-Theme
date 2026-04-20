@@ -3,6 +3,7 @@
  * Title: Landing — Testimonial + CTA
  * Slug: envosta/landing-testimonial-cta
  * Categories: envosta-landing
+ * Template Types: page-landing
  * Description: Dark testimonial section with 5-star row, pull quote, author, divider, and centered CTA.
  * Viewport Width: 1440
  */

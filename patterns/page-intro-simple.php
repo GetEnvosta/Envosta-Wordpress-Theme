@@ -3,6 +3,7 @@
  * Title: Page — Simple Intro
  * Slug: envosta/page-intro-simple
  * Categories: envosta-page
+ * Template Types: page
  * Description: Constrained centered intro with eyebrow, page title, lead paragraph, and divider.
  * Viewport Width: 1440
  */

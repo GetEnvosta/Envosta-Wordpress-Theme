@@ -3,6 +3,7 @@
  * Title: Blog — Minimal Header
  * Slug: envosta/blog-header-minimal
  * Categories: envosta-blog
+ * Template Types: index, home
  * Description: Tight editorial blog header with centered eyebrow, H1, and lead paragraph.
  * Viewport Width: 1440
  */

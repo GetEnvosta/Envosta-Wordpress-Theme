@@ -3,6 +3,7 @@
  * Title: Search — Header
  * Slug: envosta/search-header
  * Categories: envosta-search
+ * Template Types: search
  * Description: Section header for search results with eyebrow, query heading, and result count.
  * Viewport Width: 1440
  */

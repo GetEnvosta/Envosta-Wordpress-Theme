@@ -3,6 +3,7 @@
  * Title: Full Width — Image Split
  * Slug: envosta/fullwidth-split
  * Categories: envosta-page
+ * Template Types: page-full-width
  * Description: Edge-to-edge 50/50 split with gradient SVG image on the left and padded content on the right.
  * Viewport Width: 1440
  */

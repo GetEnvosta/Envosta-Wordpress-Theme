@@ -3,6 +3,7 @@
  * Title: Checkout — Guarantee Banner
  * Slug: envosta/checkout-guarantee
  * Categories: envosta-checkout
+ * Template Types: page-checkout
  * Description: Soft-background reassurance card with shield emoji, 30-day guarantee heading and single-line description.
  * Viewport Width: 1440
  */

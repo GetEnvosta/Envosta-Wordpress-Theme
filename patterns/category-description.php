@@ -3,6 +3,7 @@
  * Title: Category — Description Block
  * Slug: envosta/category-description
  * Categories: envosta-shop
+ * Template Types: taxonomy-product_cat
  * Description: Two-column category intro with query title and term description on the left, three stacked gradient panels on the right.
  * Viewport Width: 1440
  */

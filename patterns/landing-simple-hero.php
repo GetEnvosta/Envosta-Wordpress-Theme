@@ -3,6 +3,7 @@
  * Title: Landing — Simple Conversion Hero
  * Slug: envosta/landing-simple-hero
  * Categories: envosta-landing
+ * Template Types: page-landing
  * Description: Centered conversion hero with eyebrow badge, tight headline, inline email form, and trust line.
  * Viewport Width: 1440
  */

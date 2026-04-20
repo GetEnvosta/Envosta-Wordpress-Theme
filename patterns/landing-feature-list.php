@@ -3,6 +3,7 @@
  * Title: Landing — Feature Checklist
  * Slug: envosta/landing-feature-list
  * Categories: envosta-landing
+ * Template Types: page-landing
  * Description: Two-column feature section with intro copy and a bordered card of six checklisted feature rows.
  * Viewport Width: 1440
  */

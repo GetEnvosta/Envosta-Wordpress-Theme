@@ -3,6 +3,7 @@
  * Title: Front Page — Marketing Composition
  * Slug: envosta/front-marketing
  * Categories: envosta-hero
+ * Template Types: front-page
  * Description: Centered marketing hero with dual CTAs and a four-column benefits bar beneath.
  * Viewport Width: 1440
  */

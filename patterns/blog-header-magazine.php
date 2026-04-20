@@ -3,6 +3,7 @@
  * Title: Blog — Magazine Header
  * Slug: envosta/blog-header-magazine
  * Categories: envosta-blog
+ * Template Types: index, home
  * Description: Magazine-style blog header with title on left and horizontal filter pills on right.
  * Viewport Width: 1440
  */

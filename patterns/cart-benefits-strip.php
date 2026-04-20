@@ -3,6 +3,7 @@
  * Title: Cart — Benefits Strip
  * Slug: envosta/cart-benefits-strip
  * Categories: envosta-cart
+ * Template Types: page-cart
  * Description: Thin four-column reassurance band for the cart — shipping, secure checkout, returns, gift wrap.
  * Viewport Width: 1440
  */

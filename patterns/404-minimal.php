@@ -3,6 +3,7 @@
  * Title: 404 — Minimal
  * Slug: envosta/404-minimal
  * Categories: envosta-404
+ * Template Types: 404
  * Description: Clean centered 404 with oversized faded numeral, message, and a single pill CTA home.
  * Viewport Width: 1440
  */

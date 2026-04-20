@@ -3,6 +3,7 @@
  * Title: Full Width — Pull Quote
  * Slug: envosta/fullwidth-quote
  * Categories: envosta-page
+ * Template Types: page-full-width
  * Description: Full-width soft-background section with centered oversized italic pull quote and author line.
  * Viewport Width: 1440
  */

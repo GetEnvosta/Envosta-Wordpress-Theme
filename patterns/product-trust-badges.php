@@ -3,6 +3,7 @@
  * Title: Product — Trust Badges Strip
  * Slug: envosta/product-trust-badges
  * Categories: envosta-product
+ * Template Types: single-product
  * Description: Understated four-column trust strip sitting below product info — shipping, returns, warranty, secure checkout.
  * Viewport Width: 1440
  */

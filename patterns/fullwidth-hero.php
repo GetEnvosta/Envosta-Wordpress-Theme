@@ -3,6 +3,7 @@
  * Title: Full Width — Immersive Hero
  * Slug: envosta/fullwidth-hero
  * Categories: envosta-page
+ * Template Types: page-full-width
  * Description: Immersive full-bleed hero with Stripe-style purple/blue gradient, inverted text, and CTA.
  * Viewport Width: 1440
  */

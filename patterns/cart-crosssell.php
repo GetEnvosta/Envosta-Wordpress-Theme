@@ -3,6 +3,7 @@
  * Title: Cart — Cross-sell Row
  * Slug: envosta/cart-crosssell
  * Categories: envosta-cart
+ * Template Types: page-cart
  * Description: "Complete your order" section with a three-column curated product-collection grid of compact add-on cards.
  * Viewport Width: 1440
  */

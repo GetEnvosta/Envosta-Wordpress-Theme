@@ -3,6 +3,7 @@
  * Title: Front Page — Portfolio Intro
  * Slug: envosta/front-portfolio
  * Categories: envosta-hero
+ * Template Types: front-page
  * Description: Designer portfolio landing with oversized name, bio, and a 2x2 gradient project grid.
  * Viewport Width: 1440
  */

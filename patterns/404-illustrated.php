@@ -3,6 +3,7 @@
  * Title: 404 — Illustrated
  * Slug: envosta/404-illustrated
  * Categories: envosta-404
+ * Template Types: 404
  * Description: Full-viewport 404 with gradient illustration backdrop, headline, message, and dual CTAs.
  * Viewport Width: 1440
  */

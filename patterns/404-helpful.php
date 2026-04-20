@@ -3,6 +3,7 @@
  * Title: 404 — Helpful Links
  * Slug: envosta/404-helpful
  * Categories: envosta-404
+ * Template Types: 404
  * Description: 404 message with a 3-up grid of popular destination cards to encourage exploration.
  * Viewport Width: 1440
  */

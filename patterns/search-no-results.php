@@ -3,6 +3,7 @@
  * Title: Search — No Results
  * Slug: envosta/search-no-results
  * Categories: envosta-search
+ * Template Types: search
  * Description: Empty-state card with icon, heading, search suggestions list, and back-home button.
  * Viewport Width: 1440
  */

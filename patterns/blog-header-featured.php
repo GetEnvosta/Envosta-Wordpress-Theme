@@ -3,6 +3,7 @@
  * Title: Blog — Featured Post
  * Slug: envosta/blog-header-featured
  * Categories: envosta-blog
+ * Template Types: index, home
  * Description: Featured post card with gradient hero, category pill, title, excerpt, CTA, and author metadata.
  * Viewport Width: 1440
  */

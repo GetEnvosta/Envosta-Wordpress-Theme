@@ -3,6 +3,7 @@
  * Title: Single — Minimal Header
  * Slug: envosta/single-header-minimal
  * Categories: envosta-single
+ * Template Types: single
  * Description: Constrained-width single post header with category, title, metadata, and featured image.
  * Viewport Width: 1440
  */

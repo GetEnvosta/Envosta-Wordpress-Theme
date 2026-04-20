@@ -3,6 +3,7 @@
  * Title: Category — Featured Collection
  * Slug: envosta/category-featured
  * Categories: envosta-shop
+ * Template Types: taxonomy-product_cat
  * Description: Editorial two-column row pairing a large gradient image card with a right-side featured collection callout.
  * Viewport Width: 1440
  */
