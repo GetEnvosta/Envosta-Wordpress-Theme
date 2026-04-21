@@ -139,6 +139,9 @@ add_action( 'init', 'envosta_remove_upsells' );
 if ( is_admin() )
 	include dirname( __FILE__ ) . '/inc/updater.php';
 
+// Mobile menu block styles: Push / Slide-Over / Slide-Down
+include dirname( __FILE__ ) . '/inc/mobile-menu.php';
+
 /**
  * GitHub Theme Auto-Updater
  *
