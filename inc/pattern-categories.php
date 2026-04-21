@@ -11,7 +11,7 @@
  *                  when WooCommerce is active, so it vanishes on
  *                  non-commerce sites.
  *
- * Assembler's existing hidden-* patterns keep their upstream categories
+ * The inherited hidden-* patterns keep their upstream categories
  * intact; these new categories are for the user-facing library.
  *
  * @package Envosta

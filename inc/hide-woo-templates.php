@@ -3,7 +3,7 @@
  * Hide WooCommerce-only templates and template parts from the Site Editor
  * when WooCommerce is not active.
  *
- * Envosta inherits Assembler's full Woo template library so a store is
+ * Envosta ships the full Woo template library so a store is
  * ready the instant WooCommerce is activated. But when Woo isn't active,
  * those templates shouldn't clutter the FSE template list — the editor
  * would show archive-product, single-product, mini-cart, etc. even on a

@@ -29,4 +29,4 @@ Child themes override brand tokens (colors, fonts, logo) only. Everything else i
 
 == License ==
 
-Envosta is licensed under GPL-2.0-or-later. Built on top of the Assembler theme by Automattic (GPL-2.0-or-later), and redistributed here under the same license.
+Envosta is licensed under GPL-2.0-or-later. Portions based on upstream GPL-2.0-or-later code from Automattic, redistributed here under the same license.
