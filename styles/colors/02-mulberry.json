@@ -118,6 +118,9 @@
                     "name": "Gradient 10"
                 }
             ]
+        },
+        "custom": {
+            "input-background": "oklch(from var(--wp--preset--color--theme-1) calc(l * 1.05) calc(c * 1.075) h)"
         }
     },
     "styles": {
@@ -143,11 +146,6 @@
                         "background": "color-mix(in srgb, var(--wp--preset--color--theme-4) 85%, #000)",
                         "text": "var(--wp--preset--color--theme-1)"
                     }
-                }
-            },
-            "link": {
-                "color": {
-                    "text": "currentColor"
                 }
             }
         },
@@ -176,11 +174,6 @@
                                 "text": "var(--wp--preset--color--theme-1)"
                             }
                         }
-                    },
-                    "link": {
-                        "color": {
-                            "text": "currentColor"
-                        }
                     }
                 }
             },
@@ -208,11 +201,6 @@
                                 "text": "var(--wp--preset--color--theme-4)"
                             }
                         }
-                    },
-                    "link": {
-                        "color": {
-                            "text": "currentColor"
-                        }
                     }
                 }
             },
@@ -239,11 +227,6 @@
                                 "background": "color-mix(in srgb, var(--wp--preset--color--theme-4) 85%, #000)",
                                 "text": "var(--wp--preset--color--theme-1)"
                             }
-                        }
-                    },
-                    "link": {
-                        "color": {
-                            "text": "currentColor"
                         }
                     }
                 }

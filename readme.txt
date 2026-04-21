@@ -1,41 +1,26 @@
 === Envosta ===
 
-Contributors: envosta
+Contributors: Envosta
 Requires at least: 6.4
 Tested up to: 6.9
-Requires PHP: 8.0
-Stable tag: 1.0.0
+Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: full-site-editing, block-patterns, block-styles, wide-blocks, style-variations, e-commerce
+Tags: full-site-editing, block-patterns, style-variations, block-styles, wide-blocks, e-commerce
 
 == Description ==
 
-Envosta is the parent theme that every Envosta client site extends through a child theme. It provides a neutral, considered FSE design system — typography scale, spacing scale, color palette, style variations — along with the interaction layer that makes sites feel modern: sticky blurred header, cart drawer, mobile menu variants, scroll-reveal animations, and full WooCommerce block template support.
+The Envosta parent theme for managed WordPress sites. Every Envosta client site inherits from this foundation through a child theme.
 
-Child themes override brand tokens (colors, fonts, logo) only. Everything else is inherited.
+Envosta ships with a neutral, production-ready FSE design system: a 5-color grayscale palette that shifts across 40+ curated color style variations, a library of typography variations, an Inter-based default font stack, and a complete WooCommerce block-based cart and checkout experience.
 
-== Features ==
-
-* Full FSE block theme with template editor support
-* Numbered color slugs (theme-1 through theme-6) + semantic aliases (base, contrast, accent, muted, border)
-* WordPress-native font size scale: small, medium, large, x-large, huge, gigantic
-* Level-based spacing scale (20-80) with room for intermediates
-* 20+ color style variations, 4+ typography variations
-* Sticky-scroll header with blurred background
-* Shopify-style cart drawer for WooCommerce
-* Four mobile menu variants: push, drawer, canvas, classic
-* Reveal-on-scroll animations with reduced-motion support
-* Bundled Inter variable font (no external requests)
-* WooCommerce block-based cart, checkout, shop templates
-* Pattern library: heroes, features, content, commerce, editorial, CTA
-* Translation-ready
+Child themes override brand tokens (colors, fonts, logo) only. Everything else is inherited and auto-updated through the parent.
 
 == Installation ==
 
-1. Upload the envosta theme folder to /wp-content/themes/.
-2. Activate via Appearance → Themes.
-3. Optional — create a child theme that declares `Template: envosta` and overrides brand tokens in its own theme.json.
+1. Upload the Envosta theme folder to `/wp-content/themes/`.
+2. Activate the theme in the WordPress admin under Appearance → Themes.
+3. Optional: create a child theme that sets `Template: envosta` and overrides brand tokens in its own theme.json.
 
 == Changelog ==
 
@@ -44,12 +29,4 @@ Child themes override brand tokens (colors, fonts, logo) only. Everything else i
 
 == License ==
 
-Envosta is licensed under the GPL-2.0-or-later.
-
-Inter
-License: SIL Open Font License, 1.1
-Source: https://rsms.me/inter/
-
-Bundled images
-License: CC0 / Unsplash License
-Source and per-image attribution: see CREDITS.md
+Envosta is licensed under GPL-2.0-or-later. Built on top of the Assembler theme by Automattic (GPL-2.0-or-later), and redistributed here under the same license.

@@ -1,148 +1,143 @@
 <?php
 /**
- * Envosta parent theme functions.
+ * Envosta functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package Envosta
- * @since   1.0.0
+ * @since Envosta 1.0
  */
 
-defined( 'ABSPATH' ) || exit;
+declare( strict_types = 1 );
 
-if ( ! defined( 'ENVOSTA_VERSION' ) ) {
-	define( 'ENVOSTA_VERSION', '1.0.0' );
-}
-
-if ( ! defined( 'ENVOSTA_DIR' ) ) {
-	define( 'ENVOSTA_DIR', get_template_directory() );
-}
-
-if ( ! defined( 'ENVOSTA_URI' ) ) {
-	define( 'ENVOSTA_URI', get_template_directory_uri() );
-}
-
-/**
- * Load infrastructure modules.
- */
-require_once ENVOSTA_DIR . '/inc/theme-supports.php';
-require_once ENVOSTA_DIR . '/inc/block-variations.php';
-
-/**
- * WooCommerce module loads only when Woo is active.
- */
-add_action( 'after_setup_theme', function () {
-	if ( class_exists( 'WooCommerce' ) ) {
-		require_once ENVOSTA_DIR . '/inc/woocommerce.php';
-	}
-} );
-
-/**
- * Enqueue parent theme styles and scripts.
- *
- * Child themes should NOT re-enqueue these. They inherit automatically
- * because a child theme's style.css includes `Template: envosta`, and
- * WordPress loads both parent and child `style.css` in that case.
- */
-function envosta_enqueue_assets() {
-
-	// The parent style.css is loaded by WordPress automatically when
-	// a child theme declares Template: envosta. We only enqueue it
-	// directly when the parent is active on its own.
-	if ( get_template() === get_stylesheet() ) {
-		wp_enqueue_style(
-			'envosta-style',
-			get_stylesheet_uri(),
-			array(),
-			ENVOSTA_VERSION
+if ( ! function_exists( 'envosta_unregister_patterns' ) ) :
+	/**
+	 * Unregister Jetpack patterns and core patterns bundled in WordPress.
+	 */
+	function envosta_unregister_patterns() {
+		$pattern_names = array(
+			// Jetpack form patterns.
+			'contact-form',
+			'newsletter-form',
+			'rsvp-form',
+			'registration-form',
+			'appointment-form',
+			'feedback-form',
+			// Patterns bundled in WordPress core.
+			// These would be removed by remove_theme_support( 'core-block-patterns' )
+			// if it's called on the init action with priority 9 from a plugin, not from a theme.
+			'core/query-standard-posts',
+			'core/query-medium-posts',
+			'core/query-small-posts',
+			'core/query-grid-posts',
+			'core/query-large-title-posts',
+			'core/query-offset-posts',
+			'core/social-links-shared-background-color',
 		);
+		foreach ( $pattern_names as $pattern_name ) {
+			$pattern = \WP_Block_Patterns_Registry::get_instance()->get_registered( $pattern_name );
+			if ( $pattern ) {
+				unregister_block_pattern( $pattern_name );
+			}
+		}
 	}
 
-	// Supplemental CSS — interactions, Woo overrides, decorative effects
-	// that theme.json cannot express.
-	wp_enqueue_style(
-		'envosta-supplemental',
-		ENVOSTA_URI . '/assets/css/supplemental.css',
-		array(),
-		ENVOSTA_VERSION
-	);
+endif;
 
-	// Frontend interactions — sticky nav, reveal-on-scroll.
-	wp_enqueue_script(
-		'envosta-interactions',
-		ENVOSTA_URI . '/assets/js/interactions.js',
-		array(),
-		ENVOSTA_VERSION,
-		array( 'strategy' => 'defer' )
-	);
+if ( ! function_exists( 'envosta_setup' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * @since Envosta 1.0
+	 *
+	 * @return void
+	 */
+	function envosta_setup() {
 
-	// Mobile menu — push/drawer/full-canvas variants.
-	wp_enqueue_script(
-		'envosta-mobile-menu',
-		ENVOSTA_URI . '/assets/js/mobile-menu.js',
-		array(),
-		ENVOSTA_VERSION,
-		array( 'strategy' => 'defer' )
-	);
-}
-add_action( 'wp_enqueue_scripts', 'envosta_enqueue_assets', 10 );
+		// Make theme available for translation.
+		load_theme_textdomain( 'envosta', get_template_directory() . '/languages' );
 
-/**
- * Register pattern categories for the Envosta pattern library.
- */
-function envosta_register_pattern_categories() {
-	if ( ! function_exists( 'register_block_pattern_category' ) ) {
-		return;
+		// Enqueue editor styles.
+		add_editor_style( 'style.css' );
+		// Unregister Jetpack form patterns and core patterns bundled in WordPress.
+		// Simple sites
+		envosta_unregister_patterns();
+		add_filter( 'wp_loaded', function () {
+			// Atomic sites
+			envosta_unregister_patterns();
+		} );
+		// Remove theme support for the core and featured patterns coming from the Dotorg pattern directory.
+		remove_theme_support( 'core-block-patterns' );
 	}
 
-	$categories = array(
-		'hero'         => __( 'Hero',         'envosta' ),
-		'features'     => __( 'Features',     'envosta' ),
-		'content'      => __( 'Content',      'envosta' ),
-		'commerce'     => __( 'Commerce',     'envosta' ),
-		'cta'          => __( 'CTA',          'envosta' ),
-		'editorial'    => __( 'Editorial',    'envosta' ),
-		'social-proof' => __( 'Social Proof', 'envosta' ),
-		'header'       => __( 'Header',       'envosta' ),
-		'footer'       => __( 'Footer',       'envosta' ),
-	);
+endif;
 
-	foreach ( $categories as $slug => $label ) {
-		register_block_pattern_category( $slug, array( 'label' => $label ) );
+add_action( 'after_setup_theme', 'envosta_setup' );
+
+if ( ! function_exists( 'envosta_styles' ) ) :
+	/**
+	 * Enqueue styles.
+	 *
+	 * @since Envosta 1.0
+	 *
+	 * @return void
+	 */
+	function envosta_styles() {
+
+		// Register theme stylesheet.
+		wp_register_style(
+			'envosta-style',
+			get_stylesheet_directory_uri() . '/style.css',
+			array(),
+			wp_get_theme()->get( 'Version' )
+		);
+
+		// Enqueue theme stylesheet.
+		wp_enqueue_style( 'envosta-style' );
+
 	}
-}
-add_action( 'init', 'envosta_register_pattern_categories' );
 
-/**
- * Add helper body classes so CSS can target header variants,
- * menu styles, and layout settings.
- */
-function envosta_body_classes( $classes ) {
-	$header_style = get_theme_mod( 'envosta_header_style', 'sticky-blur' );
-	$menu_style   = get_theme_mod( 'envosta_menu_style', 'classic' );
+endif;
 
-	$classes[] = 'envosta';
-	$classes[] = 'envosta-header-' . sanitize_html_class( $header_style );
-	$classes[] = 'envosta-menu-' . sanitize_html_class( $menu_style );
+add_action( 'wp_enqueue_scripts', 'envosta_styles' );
 
-	return $classes;
-}
-add_filter( 'body_class', 'envosta_body_classes' );
+if ( ! function_exists( 'envosta_preload_fonts' ) ) :
+	/**
+	 * Preload the base Inter variable font to reduce FOUT.
+	 *
+	 * @since Envosta 1.0
+	 *
+	 * @return void
+	 */
+	function envosta_preload_fonts() {
+		$font_url = get_stylesheet_directory_uri() . '/assets/fonts/inter/InterVariable.woff2';
+		echo '<link rel="preload" href="' . esc_url( $font_url ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	}
 
-/**
- * Editor preview styles — makes the block editor visually match the frontend
- * so authors don't author in one environment and preview in another.
- */
-function envosta_editor_styles() {
-	add_editor_style( 'assets/css/editor.css' );
-}
-add_action( 'after_setup_theme', 'envosta_editor_styles' );
+endif;
 
-/**
- * Register custom template hierarchy fallbacks for landing and full-width
- * page templates declared in theme.json customTemplates.
- *
- * Templates live in /templates/page-landing.html and /templates/page-full-width.html
- * and are selected via the Page Attributes > Template dropdown in the editor.
- */
+add_action( 'wp_head', 'envosta_preload_fonts', 1 );
+
+if ( ! function_exists( 'envosta_remove_upsells' ) ) :
+	/**
+	 * Remove upsells from product description.
+	 *
+	 * @since Envosta 1.0
+	 *
+	 * @return void
+	 */
+	function envosta_remove_upsells() {
+		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+	}
+
+endif;
+
+add_action( 'init', 'envosta_remove_upsells' );
+
+
+// updater for WordPress.com themes
+if ( is_admin() )
+	include dirname( __FILE__ ) . '/inc/updater.php';
 
 /**
  * GitHub Theme Auto-Updater

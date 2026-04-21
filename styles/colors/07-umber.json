@@ -89,6 +89,9 @@
                     "name": "Gradient 6"
                 }
             ]
+        },
+        "custom": {
+            "input-background": "oklch(from var(--wp--preset--color--theme-1) calc(l * 1.05) calc(c * 1.075) h)"
         }
     },
     "styles": {
@@ -113,11 +116,6 @@
                 "color": {
                     "background": "var(--wp--preset--color--theme-4)",
                     "text": "var(--wp--preset--color--theme-1)"
-                }
-            },
-            "link": {
-                "color": {
-                    "text": "currentColor"
                 }
             }
         },
@@ -159,6 +157,15 @@
                         "color": {
                             "text": "color-mix(in srgb, currentColor 25%, transparent)"
                         }
+                    },
+                    "core/navigation": {
+                        "elements": {
+                            "link": {
+                                "color": {
+                                    "text": "var(--wp--preset--color--theme-1) !important"
+                                }
+                            }
+                        }
                     }
                 },
                 "elements": {
@@ -178,6 +185,11 @@
                         "color": {
                             "text": "var(--wp--preset--color--theme-1)"
                         }
+                    },
+                    "link": {
+                        "color": {
+                            "text": "var(--wp--preset--color--theme-1)"
+                        }
                     }
                 }
             },
@@ -190,6 +202,15 @@
                     "core/separator": {
                         "color": {
                             "text": "color-mix(in srgb, currentColor 25%, transparent)"
+                        }
+                    },
+                    "core/navigation": {
+                        "elements": {
+                            "link": {
+                                "color": {
+                                    "text": "var(--wp--preset--color--theme-1) !important"
+                                }
+                            }
                         }
                     }
                 },
@@ -207,6 +228,11 @@
                         }
                     },
                     "heading": {
+                        "color": {
+                            "text": "var(--wp--preset--color--theme-1)"
+                        }
+                    },
+                    "link": {
                         "color": {
                             "text": "var(--wp--preset--color--theme-1)"
                         }
