@@ -142,6 +142,11 @@ if ( is_admin() )
 // Mobile menu block styles: Push / Slide-Over / Slide-Down
 include dirname( __FILE__ ) . '/inc/mobile-menu.php';
 
+// Hide WooCommerce-only templates/parts/patterns from the Site Editor when
+// WooCommerce is not active. (The files still ship, so everything lights up
+// the moment WooCommerce is installed.)
+include dirname( __FILE__ ) . '/inc/hide-woo-templates.php';
+
 // WooCommerce integration — loads only when WooCommerce is active so the
 // theme auto-detects a store setup and ships the Shopify-style cart drawer,
 // product gallery features, and preset-ready templates the moment Woo is on.
