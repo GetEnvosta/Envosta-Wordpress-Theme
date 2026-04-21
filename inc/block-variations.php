@@ -2,12 +2,12 @@
 /**
  * Block variations for Envosta.
  *
- * Registers theme-specific variations on core blocks so clients can pick
- * Envosta-branded mobile menu styles, header variants, and card styles
+ * Registers theme-specific variations on core blocks so content editors can
+ * pick mobile menu styles, card styles, button variants, and image frames
  * directly from the block editor sidebar — no code required per client.
  *
- * All variations are namespaced `envosta/*` and prefixed `envosta-*` in CSS
- * to guarantee no collision with core or other themes.
+ * Style names are unprefixed (no "envosta-*"); Envosta owns the theme so
+ * there's no namespace collision risk.
  *
  * @package Envosta
  */
@@ -21,77 +21,79 @@ function envosta_register_block_styles() {
 
 	// --- core/navigation — mobile menu styles ---
 	register_block_style( 'core/navigation', array(
-		'name'  => 'envosta-menu-push',
+		'name'  => 'menu-push',
 		'label' => __( 'Push Menu', 'envosta' ),
 	) );
 	register_block_style( 'core/navigation', array(
-		'name'  => 'envosta-menu-drawer',
+		'name'  => 'menu-drawer',
 		'label' => __( 'Slide Drawer', 'envosta' ),
 	) );
 	register_block_style( 'core/navigation', array(
-		'name'  => 'envosta-menu-canvas',
+		'name'  => 'menu-canvas',
 		'label' => __( 'Full Canvas', 'envosta' ),
 	) );
 	register_block_style( 'core/navigation', array(
-		'name'  => 'envosta-menu-classic',
+		'name'  => 'menu-classic',
 		'label' => __( 'Classic', 'envosta' ),
 	) );
 
 	// --- core/group — section backgrounds ---
 	register_block_style( 'core/group', array(
-		'name'  => 'envosta-section-tight',
+		'name'  => 'section-tight',
 		'label' => __( 'Tight Section', 'envosta' ),
 	) );
 	register_block_style( 'core/group', array(
-		'name'  => 'envosta-section-spacious',
+		'name'  => 'section-spacious',
 		'label' => __( 'Spacious Section', 'envosta' ),
 	) );
 
 	// --- core/cover — hero treatments ---
 	register_block_style( 'core/cover', array(
-		'name'  => 'envosta-cover-dim',
+		'name'  => 'cover-dim',
 		'label' => __( 'Dim Overlay', 'envosta' ),
 	) );
 	register_block_style( 'core/cover', array(
-		'name'  => 'envosta-cover-grain',
+		'name'  => 'cover-grain',
 		'label' => __( 'Grain Overlay', 'envosta' ),
 	) );
 
 	// --- core/image — card frames ---
 	register_block_style( 'core/image', array(
-		'name'  => 'envosta-image-rounded',
+		'name'  => 'image-rounded',
 		'label' => __( 'Rounded', 'envosta' ),
 	) );
 	register_block_style( 'core/image', array(
-		'name'  => 'envosta-image-bordered',
+		'name'  => 'image-bordered',
 		'label' => __( 'Bordered', 'envosta' ),
 	) );
 
 	// --- core/button — button variants ---
 	register_block_style( 'core/button', array(
-		'name'  => 'envosta-btn-pill',
+		'name'  => 'outlined',
+		'label' => __( 'Outlined', 'envosta' ),
+	) );
+	register_block_style( 'core/button', array(
+		'name'  => 'pill',
 		'label' => __( 'Pill', 'envosta' ),
 	) );
 	register_block_style( 'core/button', array(
-		'name'  => 'envosta-btn-arrow',
+		'name'  => 'arrow',
 		'label' => __( 'Arrow', 'envosta' ),
 	) );
 
 	// --- core/quote — editorial quote variant ---
 	register_block_style( 'core/quote', array(
-		'name'  => 'envosta-quote-editorial',
+		'name'  => 'editorial',
 		'label' => __( 'Editorial', 'envosta' ),
 	) );
 }
 add_action( 'init', 'envosta_register_block_styles' );
 
 /**
- * Register block variations (visible in the block inserter as separate items).
- * These are distinct from block styles — a variation creates a new insertable
- * entity with preset attributes, not just a style override.
+ * Enqueue editor-side block variations JS.
  *
- * Variations are registered via JS (block editor context), so this function
- * enqueues the JS that does the actual registration.
+ * Block variations (new insertable entities with preset attributes) are
+ * registered via JS because they require the block editor context.
  */
 function envosta_register_block_variations_js() {
 	wp_enqueue_script(

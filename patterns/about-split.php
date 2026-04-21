@@ -2,76 +2,104 @@
 /**
  * Title: About — Split
  * Slug: envosta/about-split
- * Categories: envosta-content
- * Description: Two-column about section with portrait image, narrative copy, stat row, and signature CTA.
- * Viewport Width: 1440
+ * Categories: content
+ * Description: Two-column about section with portrait, narrative, and stat row.
+ * Viewport Width: 1400
  */
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"6rem","right":"2rem","bottom":"6rem","left":"2rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull" style="padding-top:6rem;padding-right:2rem;padding-bottom:6rem;padding-left:2rem">
-	<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"top":"3rem","left":"5rem"}}}} -->
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-1","layout":{"type":"constrained","contentSize":"1280px"}} -->
+<div class="wp-block-group alignfull has-theme-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--40)">
+
+	<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|60"}}}} -->
 	<div class="wp-block-columns are-vertically-aligned-center">
 
-		<!-- wp:column {"verticalAlignment":"center","width":"45%","className":"envosta-reveal"} -->
-		<div class="wp-block-column is-vertically-aligned-center envosta-reveal" style="flex-basis:45%">
-			<!-- wp:group {"style":{"dimensions":{"aspectRatio":"4/5"},"border":{"radius":"16px"}},"backgroundColor":"accent-soft"} -->
-				<div class="wp-block-group has-accent-soft-background-color has-background" style="border-radius:16px;aspect-ratio:4/5"></div>
-			<!-- /wp:group -->
+		<!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
+		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%">
+			<!-- wp:image {"sizeSlug":"large","style":{"border":{"radius":"10px"}}} -->
+			<figure class="wp-block-image size-large has-custom-border"><img src="<?php echo esc_url(get_theme_file_uri('assets/images/portrait-1.jpg')); ?>" alt="<?php esc_attr_e('Portrait of the team', 'envosta'); ?>" style="border-radius:10px;aspect-ratio:4/5;object-fit:cover;width:100%"/></figure>
+			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"verticalAlignment":"center","width":"55%","className":"envosta-reveal"} -->
-		<div class="wp-block-column is-vertically-aligned-center envosta-reveal" style="flex-basis:55%">
-			<!-- wp:paragraph {"className":"envosta-eyebrow","style":{"typography":{"fontSize":"0.78rem","letterSpacing":"0.14em","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"1rem"}}},"textColor":"accent"} -->
-			<p class="envosta-eyebrow has-accent-color has-text-color" style="margin-bottom:1rem;font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase"><?php esc_html_e( 'Our story', 'envosta' ); ?></p>
+		<!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
+		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
+
+			<!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","letterSpacing":"0.12em","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}},"textColor":"theme-4"} -->
+			<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--20);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase"><?php esc_html_e('Our story', 'envosta'); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"clamp(2rem, 4vw, 3rem)","letterSpacing":"-0.02em","lineHeight":"1.1","fontWeight":"700"},"spacing":{"margin":{"bottom":"1.5rem"}}}} -->
-			<h2 class="wp-block-heading" style="margin-bottom:1.5rem;font-size:clamp(2rem, 4vw, 3rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1"><?php esc_html_e( 'Built from real work, not theory.', 'envosta' ); ?></h2>
+			<!-- wp:heading {"level":2,"style":{"typography":{"letterSpacing":"-0.025em","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"fontSize":"x-large"} -->
+			<h2 class="wp-block-heading has-x-large-font-size" style="margin-bottom:var(--wp--preset--spacing--30);letter-spacing:-0.025em;line-height:1"><?php esc_html_e('Fourteen years. One rule: make it worth keeping.', 'envosta'); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.05rem","lineHeight":"1.75"}},"textColor":"muted"} -->
-			<p class="has-muted-color has-text-color" style="font-size:1.05rem;line-height:1.75"><?php esc_html_e( 'We started this because we were tired of shipping sites that felt like compromises. Every template we tried wanted us to bend to its way of working.', 'envosta' ); ?></p>
+			<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"textColor":"theme-4"} -->
+			<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--30)"><?php esc_html_e('What started in a one-room apartment in Oslo is now a small, senior team working with founders across four continents. The shape has changed. The rule has not.', 'envosta'); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.05rem","lineHeight":"1.75"}},"textColor":"muted"} -->
-			<p class="has-muted-color has-text-color" style="font-size:1.05rem;line-height:1.75"><?php esc_html_e( 'So we built the thing we wanted — a foundation that keeps up with ambition and never gets in the way.', 'envosta' ); ?></p>
+			<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"textColor":"theme-4"} -->
+			<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--40)"><?php esc_html_e('We design for the decade ahead — not the timeline of a post. That means fewer projects, longer conversations, and work that keeps paying dividends long after launch.', 'envosta'); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:group {"style":{"spacing":{"margin":{"top":"2.5rem"},"padding":{"top":"1.75rem","bottom":"1.75rem"},"blockGap":"2.5rem"},"border":{"top":{"color":"var:preset|color|border","width":"1px"},"bottom":{"color":"var:preset|color|border","width":"1px"}}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-			<div class="wp-block-group" style="border-top-color:var(--wp--preset--color--border);border-top-width:1px;border-bottom-color:var(--wp--preset--color--border);border-bottom-width:1px;margin-top:2.5rem;padding-top:1.75rem;padding-bottom:1.75rem">
-				<!-- wp:group {"style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group">
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.75rem","fontWeight":"700","letterSpacing":"-0.02em","lineHeight":"1"}}} --><p style="font-size:1.75rem;font-weight:700;letter-spacing:-0.02em;line-height:1"><?php esc_html_e( '12+', 'envosta' ); ?></p><!-- /wp:paragraph -->
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.8rem"}},"textColor":"muted"} --><p class="has-muted-color has-text-color" style="font-size:0.8rem"><?php esc_html_e( 'Years shipping', 'envosta' ); ?></p><!-- /wp:paragraph -->
+			<!-- wp:separator {"style":{"color":{"background":"var:preset|color|theme-2"}},"className":"is-style-wide"} -->
+			<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:var(--wp--preset--color--theme-2);color:var(--wp--preset--color--theme-2)"/>
+			<!-- /wp:separator -->
+
+			<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"},"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}}} -->
+			<div class="wp-block-columns" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)">
+
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:heading {"level":3,"style":{"typography":{"letterSpacing":"-0.02em"},"spacing":{"margin":{"top":"0","bottom":"4px"}}},"fontSize":"large"} -->
+					<h3 class="wp-block-heading has-large-font-size" style="margin-top:0;margin-bottom:4px;letter-spacing:-0.02em"><?php esc_html_e('2011', 'envosta'); ?></h3>
+					<!-- /wp:heading -->
+					<!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","letterSpacing":"0.06em","textTransform":"uppercase"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"theme-3"} -->
+					<p class="has-theme-3-color has-text-color" style="margin-top:0;margin-bottom:0;font-size:13px;letter-spacing:0.06em;text-transform:uppercase"><?php esc_html_e('Founded', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
 				</div>
-				<!-- /wp:group -->
-				<!-- wp:group {"style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group">
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.75rem","fontWeight":"700","letterSpacing":"-0.02em","lineHeight":"1"}}} --><p style="font-size:1.75rem;font-weight:700;letter-spacing:-0.02em;line-height:1"><?php esc_html_e( '300+', 'envosta' ); ?></p><!-- /wp:paragraph -->
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.8rem"}},"textColor":"muted"} --><p class="has-muted-color has-text-color" style="font-size:0.8rem"><?php esc_html_e( 'Sites live', 'envosta' ); ?></p><!-- /wp:paragraph -->
+				<!-- /wp:column -->
+
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:heading {"level":3,"style":{"typography":{"letterSpacing":"-0.02em"},"spacing":{"margin":{"top":"0","bottom":"4px"}}},"fontSize":"large"} -->
+					<h3 class="wp-block-heading has-large-font-size" style="margin-top:0;margin-bottom:4px;letter-spacing:-0.02em"><?php esc_html_e('12', 'envosta'); ?></h3>
+					<!-- /wp:heading -->
+					<!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","letterSpacing":"0.06em","textTransform":"uppercase"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"theme-3"} -->
+					<p class="has-theme-3-color has-text-color" style="margin-top:0;margin-bottom:0;font-size:13px;letter-spacing:0.06em;text-transform:uppercase"><?php esc_html_e('Team', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
 				</div>
-				<!-- /wp:group -->
-				<!-- wp:group {"style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group">
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.75rem","fontWeight":"700","letterSpacing":"-0.02em","lineHeight":"1"}}} --><p style="font-size:1.75rem;font-weight:700;letter-spacing:-0.02em;line-height:1"><?php esc_html_e( '100%', 'envosta' ); ?></p><!-- /wp:paragraph -->
-					<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.8rem"}},"textColor":"muted"} --><p class="has-muted-color has-text-color" style="font-size:0.8rem"><?php esc_html_e( 'Referral rate', 'envosta' ); ?></p><!-- /wp:paragraph -->
+				<!-- /wp:column -->
+
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:heading {"level":3,"style":{"typography":{"letterSpacing":"-0.02em"},"spacing":{"margin":{"top":"0","bottom":"4px"}}},"fontSize":"large"} -->
+					<h3 class="wp-block-heading has-large-font-size" style="margin-top:0;margin-bottom:4px;letter-spacing:-0.02em"><?php esc_html_e('4', 'envosta'); ?></h3>
+					<!-- /wp:heading -->
+					<!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","letterSpacing":"0.06em","textTransform":"uppercase"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"theme-3"} -->
+					<p class="has-theme-3-color has-text-color" style="margin-top:0;margin-bottom:0;font-size:13px;letter-spacing:0.06em;text-transform:uppercase"><?php esc_html_e('Continents', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
 				</div>
-				<!-- /wp:group -->
+				<!-- /wp:column -->
+
 			</div>
-			<!-- /wp:group -->
+			<!-- /wp:columns -->
 
-			<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"2rem"}}}} -->
-			<div class="wp-block-buttons" style="margin-top:2rem">
-				<!-- wp:button {"className":"is-style-envosta-btn-arrow","style":{"border":{"radius":"9999px","width":"1px"}},"borderColor":"border"} -->
-				<div class="wp-block-button is-style-envosta-btn-arrow"><a class="wp-block-button__link has-border-color has-border-border-color wp-element-button" href="#" style="border-width:1px;border-radius:9999px"><?php esc_html_e( 'Read our full story', 'envosta' ); ?></a></div>
+			<!-- wp:separator {"style":{"color":{"background":"var:preset|color|theme-2"}},"className":"is-style-wide"} -->
+			<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:var(--wp--preset--color--theme-2);color:var(--wp--preset--color--theme-2)"/>
+			<!-- /wp:separator -->
+
+			<!-- wp:buttons -->
+			<div class="wp-block-buttons">
+				<!-- wp:button {"className":"is-style-outline"} -->
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e('Read our full story →', 'envosta'); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
+
 		</div>
 		<!-- /wp:column -->
 
 	</div>
 	<!-- /wp:columns -->
+
 </div>
 <!-- /wp:group -->

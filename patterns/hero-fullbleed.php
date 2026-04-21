@@ -2,35 +2,29 @@
 /**
  * Title: Hero — Full Bleed
  * Slug: envosta/hero-fullbleed
- * Categories: envosta-hero
- * Description: Full-viewport hero with rich gradient background and centered overlay content.
- * Viewport Width: 1440
+ * Categories: hero
+ * Description: Full-width cover hero with overlay, centered title, and CTA.
+ * Viewport Width: 1400
  */
 ?>
-<!-- wp:group {"align":"full","className":"envosta-hero","style":{"spacing":{"padding":{"top":"10rem","bottom":"10rem","right":"2rem","left":"2rem"}},"dimensions":{"minHeight":"92vh"}},"layout":{"type":"constrained","contentSize":"860px"}} -->
-<div class="wp-block-group alignfull envosta-hero" style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%);color:#ffffff;min-height:92vh;padding-top:10rem;padding-right:2rem;padding-bottom:10rem;padding-left:2rem">
+<!-- wp:cover {"url":"<?php echo esc_url(get_theme_file_uri('assets/images/hero-3.jpg')); ?>","dimRatio":40,"overlayColor":"theme-5","minHeight":80,"minHeightUnit":"vh","isDark":true,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"constrained","contentSize":"900px"}} -->
+<div class="wp-block-cover alignfull" style="padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--40);min-height:80vh"><span aria-hidden="true" class="wp-block-cover__background has-theme-5-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url(get_theme_file_uri('assets/images/hero-3.jpg')); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
 
-	<!-- wp:paragraph {"align":"center","className":"envosta-eyebrow","style":{"typography":{"fontSize":"0.78rem","letterSpacing":"0.16em","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"1.5rem"}}}} -->
-	<p class="has-text-align-center envosta-eyebrow" style="color:#a78bfa;margin-bottom:1.5rem;font-size:0.78rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase"><?php esc_html_e( '— The new standard', 'envosta' ); ?></p>
-	<!-- /wp:paragraph -->
-
-	<!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"clamp(3rem, 7vw, 6rem)","lineHeight":"1","letterSpacing":"-0.035em","fontWeight":"700"},"spacing":{"margin":{"bottom":"2rem"}}}} -->
-	<h1 class="wp-block-heading has-text-align-center" style="color:#ffffff;margin-bottom:2rem;font-size:clamp(3rem, 7vw, 6rem);font-weight:700;letter-spacing:-0.035em;line-height:1"><?php esc_html_e( 'Beautiful, by default.', 'envosta' ); ?></h1>
+	<!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"letterSpacing":"-0.03em","lineHeight":"0.98"},"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"textColor":"theme-1","fontSize":"xx-large","fontFamily":"inter"} -->
+	<h1 class="wp-block-heading has-text-align-center has-theme-1-color has-text-color has-inter-font-family has-xx-large-font-size" style="margin-bottom:var(--wp--preset--spacing--30);letter-spacing:-0.03em;line-height:0.98"><?php esc_html_e('A new standard for considered design.', 'envosta'); ?></h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.3rem","lineHeight":"1.55"},"spacing":{"margin":{"left":"auto","right":"auto"}}}} -->
-	<p class="has-text-align-center" style="color:rgba(255,255,255,0.7);margin-right:auto;margin-left:auto;font-size:1.3rem;line-height:1.55"><?php esc_html_e( 'Polished from every angle. Every detail considered. Every moment designed.', 'envosta' ); ?></p>
+	<!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}},"typography":{"lineHeight":"1.5"}},"textColor":"theme-2","fontSize":"medium"} -->
+	<p class="has-text-align-center has-theme-2-color has-text-color has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--40);line-height:1.5"><?php esc_html_e('Every detail carefully weighed. Every pixel earning its place. Built for brands that refuse to look like everyone else.', 'envosta'); ?></p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"blockGap":"0.75rem","margin":{"top":"3rem"}}}} -->
-	<div class="wp-block-buttons" style="margin-top:3rem">
-		<!-- wp:button {"style":{"border":{"radius":"9999px"}}} -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#" style="border-radius:9999px;color:#0f172a;background-color:#ffffff"><?php esc_html_e( 'Start building', 'envosta' ); ?></a></div>
-		<!-- /wp:button -->
-		<!-- wp:button {"className":"is-style-envosta-btn-arrow","style":{"border":{"radius":"9999px","color":"rgba(255,255,255,0.3)","width":"1px"}}} -->
-		<div class="wp-block-button is-style-envosta-btn-arrow"><a class="wp-block-button__link wp-element-button" href="#" style="border-color:rgba(255,255,255,0.3);border-width:1px;border-radius:9999px;color:#ffffff;background-color:transparent"><?php esc_html_e( 'See the work →', 'envosta' ); ?></a></div>
+	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+	<div class="wp-block-buttons">
+		<!-- wp:button {"backgroundColor":"theme-1","textColor":"theme-5"} -->
+		<div class="wp-block-button"><a class="wp-block-button__link has-theme-5-color has-theme-1-background-color has-text-color has-background wp-element-button" href="#"><?php esc_html_e('Begin the journey', 'envosta'); ?></a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+
+</div></div>
+<!-- /wp:cover -->

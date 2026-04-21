@@ -94,17 +94,15 @@ function envosta_register_pattern_categories() {
 	}
 
 	$categories = array(
-		'envosta-hero'        => __( 'Hero',        'envosta' ),
-		'envosta-features'    => __( 'Features',    'envosta' ),
-		'envosta-content'     => __( 'Content',     'envosta' ),
-		'envosta-editorial'   => __( 'Editorial',   'envosta' ),
-		'envosta-cta'         => __( 'CTA',         'envosta' ),
-		'envosta-404'         => __( '404',         'envosta' ),
-		'envosta-blog'        => __( 'Blog',        'envosta' ),
-		'envosta-page'        => __( 'Page',        'envosta' ),
-		'envosta-landing'     => __( 'Landing',     'envosta' ),
-		'envosta-search'      => __( 'Search',      'envosta' ),
-		'envosta-woocommerce' => __( 'WooCommerce', 'envosta' ),
+		'hero'         => __( 'Hero',         'envosta' ),
+		'features'     => __( 'Features',     'envosta' ),
+		'content'      => __( 'Content',      'envosta' ),
+		'commerce'     => __( 'Commerce',     'envosta' ),
+		'cta'          => __( 'CTA',          'envosta' ),
+		'editorial'    => __( 'Editorial',    'envosta' ),
+		'social-proof' => __( 'Social Proof', 'envosta' ),
+		'header'       => __( 'Header',       'envosta' ),
+		'footer'       => __( 'Footer',       'envosta' ),
 	);
 
 	foreach ( $categories as $slug => $label ) {

@@ -1,17 +1,17 @@
 /*
 Theme Name:   Envosta
-Theme URI:    https://envosta.com/themes/envosta
-Description:  The Envosta parent theme — a curated FSE foundation for managed WordPress sites. Built for service businesses, e-commerce, and editorial brands. Ships with a modular pattern library, parameterized block variations (push menu, cart drawer, sticky-scroll header), 8 color palettes, 4 typography palettes, and full WooCommerce integration. Every Envosta client site is a small child theme on top of this foundation — which means one update here ships to every client automatically.
+Theme URI:    https://envosta.com
+Description:  The Envosta parent theme. A neutral, opinionated FSE foundation for every Envosta client site. Ships with a minimal design system, curated style variations, WooCommerce block-based cart and checkout, a Shopify-style cart drawer, four mobile menu variants, scroll-reveal animations, and a complete pattern library. Built to be extended by child themes that override brand tokens only.
 Author:       Envosta
 Author URI:   https://envosta.com
 Version:      1.0.0
 Requires at least: 6.4
-Tested up to: 6.6
-Requires PHP: 7.4
+Tested up to: 6.9
+Requires PHP: 8.0
 License:      GPL-2.0-or-later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  envosta
-Tags:         full-site-editing, block-patterns, block-styles, wide-blocks, style-variations, one-column, two-columns, three-columns, four-columns, featured-images, featured-image-header, footer-widgets, custom-menu, custom-logo, custom-colors, custom-background, editor-style, threaded-comments, translation-ready, e-commerce, portfolio, blog
+Tags:         full-site-editing, block-patterns, block-styles, wide-blocks, style-variations, one-column, two-columns, three-columns, four-columns, featured-images, custom-menu, custom-logo, custom-colors, editor-style, threaded-comments, translation-ready, e-commerce
 */
 
 /*

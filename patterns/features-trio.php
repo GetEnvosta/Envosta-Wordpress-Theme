@@ -2,71 +2,125 @@
 /**
  * Title: Features — Trio
  * Slug: envosta/features-trio
- * Categories: envosta-features
- * Description: Three polished feature cards with icon badges, titles, descriptions, and learn-more links.
- * Viewport Width: 1440
+ * Categories: features
+ * Description: Three feature cards with iconography, headings, and learn-more links.
+ * Viewport Width: 1400
  */
-
-$envosta_trio = array(
-	array(
-		'icon'  => '◆',
-		'title' => __( 'Thoughtful defaults', 'envosta' ),
-		'body'  => __( 'Start from a foundation that already looks right. Typography, spacing, and color are set — you just write the words.', 'envosta' ),
-	),
-	array(
-		'icon'  => '◈',
-		'title' => __( 'Serious flexibility', 'envosta' ),
-		'body'  => __( 'Override anything, anywhere, at any level. The design system bends to your brand — it never forces the other way.', 'envosta' ),
-	),
-	array(
-		'icon'  => '◇',
-		'title' => __( 'Ships at speed', 'envosta' ),
-		'body'  => __( 'Fast to set up, faster to iterate. Every block is tuned for performance, accessibility, and the next three years.', 'envosta' ),
-	),
-);
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"6rem","right":"2rem","bottom":"6rem","left":"2rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull" style="padding-top:6rem;padding-right:2rem;padding-bottom:6rem;padding-left:2rem">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-1","layout":{"type":"constrained","contentSize":"1280px"}} -->
+<div class="wp-block-group alignfull has-theme-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--40)">
 
-	<!-- wp:group {"className":"envosta-reveal","style":{"spacing":{"margin":{"bottom":"4rem"},"blockGap":"0.75rem"}},"layout":{"type":"constrained","contentSize":"680px"}} -->
-	<div class="wp-block-group envosta-reveal" style="margin-bottom:4rem">
-		<!-- wp:paragraph {"align":"center","className":"envosta-eyebrow","style":{"typography":{"fontSize":"0.78rem","letterSpacing":"0.14em","textTransform":"uppercase","fontWeight":"600"}},"textColor":"accent"} -->
-		<p class="has-text-align-center envosta-eyebrow has-accent-color has-text-color" style="font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase"><?php esc_html_e( 'Why teams choose us', 'envosta' ); ?></p>
+	<!-- wp:group {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","contentSize":"720px"}} -->
+	<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--60)">
+		<!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","letterSpacing":"0.12em","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}},"textColor":"theme-4"} -->
+		<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--20);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase"><?php esc_html_e('What we do', 'envosta'); ?></p>
 		<!-- /wp:paragraph -->
-		<!-- wp:heading {"textAlign":"center","level":2,"style":{"typography":{"fontSize":"clamp(2rem, 4vw, 3rem)","letterSpacing":"-0.02em","lineHeight":"1.1","fontWeight":"700"}}} -->
-		<h2 class="wp-block-heading has-text-align-center" style="font-size:clamp(2rem, 4vw, 3rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1"><?php esc_html_e( 'Three things we do really well', 'envosta' ); ?></h2>
+
+		<!-- wp:heading {"level":2,"style":{"typography":{"letterSpacing":"-0.025em","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"fontSize":"x-large"} -->
+		<h2 class="wp-block-heading has-x-large-font-size" style="margin-bottom:var(--wp--preset--spacing--30);letter-spacing:-0.025em;line-height:1"><?php esc_html_e('Three disciplines, one studio.', 'envosta'); ?></h2>
 		<!-- /wp:heading -->
-		<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.1rem","lineHeight":"1.55"},"spacing":{"margin":{"top":"0.5rem"}}},"textColor":"muted"} -->
-		<p class="has-text-align-center has-muted-color has-text-color" style="margin-top:0.5rem;font-size:1.1rem;line-height:1.55"><?php esc_html_e( 'A modern toolkit for the teams moving fastest.', 'envosta' ); ?></p>
+
+		<!-- wp:paragraph {"textColor":"theme-4","fontSize":"medium"} -->
+		<p class="has-theme-4-color has-text-color has-medium-font-size"><?php esc_html_e('From the first sketch to the final shipped build — we handle identity, product, and editorial storytelling under one roof.', 'envosta'); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"1.5rem","left":"1.5rem"}}}} -->
+	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|40"}}}} -->
 	<div class="wp-block-columns">
-		<?php foreach ( $envosta_trio as $item ) : ?>
-		<!-- wp:column {"className":"envosta-card envosta-card-hover envosta-reveal","style":{"spacing":{"padding":{"top":"2.25rem","right":"2rem","bottom":"2.25rem","left":"2rem"}},"border":{"radius":"16px","width":"1px"}},"borderColor":"border"} -->
-		<div class="wp-block-column envosta-card envosta-card-hover envosta-reveal has-border-color has-border-border-color" style="border-width:1px;border-radius:16px;padding:2.25rem 2rem">
-			<!-- wp:group {"style":{"spacing":{"margin":{"bottom":"1.5rem"}},"border":{"radius":"10px"}},"backgroundColor":"base-2","layout":{"type":"flex","justifyContent":"center"}} -->
-			<div class="wp-block-group has-base-2-background-color has-background" style="border-radius:10px;margin-bottom:1.5rem;width:2.75rem;height:2.75rem;align-items:center">
-				<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.25rem","fontWeight":"600"}},"textColor":"accent"} -->
-				<p class="has-text-align-center has-accent-color has-text-color" style="font-size:1.25rem;font-weight:600"><?php echo esc_html( $item['icon'] ); ?></p>
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:group {"style":{"border":{"width":"1px","color":"var:preset|color|theme-2","radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-border-color" style="border-color:var(--wp--preset--color--theme-2);border-width:1px;border-radius:12px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+
+				<!-- wp:group {"style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"10px","right":"10px"},"margin":{"bottom":"var:preset|spacing|30"}},"dimensions":{"minHeight":"44px"},"typography":{"fontSize":"22px"}},"backgroundColor":"theme-2","layout":{"type":"flex","justifyContent":"center"}} -->
+				<div class="wp-block-group has-theme-2-background-color has-background" style="border-radius:8px;min-height:44px;margin-bottom:var(--wp--preset--spacing--30);padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;font-size:22px">
+					<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"typography":{"fontSize":"22px"}}} -->
+					<p style="margin-top:0;margin-bottom:0;font-size:22px"><?php esc_html_e('◆', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
+				<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}},"typography":{"letterSpacing":"-0.01em"}},"fontSize":"medium"} -->
+				<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--20);letter-spacing:-0.01em"><?php esc_html_e('Brand identity', 'envosta'); ?></h3>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"textColor":"theme-4"} -->
+				<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--30)"><?php esc_html_e('Marks, wordmarks, systems, and guidelines that hold together at every scale and touchpoint.', 'envosta'); ?></p>
 				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"style":{"typography":{"fontSize":"14px","fontWeight":"500"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+				<p style="margin-top:0;margin-bottom:0;font-size:14px;font-weight:500"><a href="#"><?php esc_html_e('Learn more →', 'envosta'); ?></a></p>
+				<!-- /wp:paragraph -->
+
 			</div>
 			<!-- /wp:group -->
-			<!-- wp:heading {"level":3,"style":{"typography":{"fontSize":"1.25rem","fontWeight":"600","letterSpacing":"-0.01em"},"spacing":{"margin":{"bottom":"0.75rem"}}}} -->
-			<h3 class="wp-block-heading" style="margin-bottom:0.75rem;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em"><?php echo esc_html( $item['title'] ); ?></h3>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.65"}},"textColor":"muted"} -->
-			<p class="has-muted-color has-text-color" style="font-size:0.95rem;line-height:1.65"><?php echo esc_html( $item['body'] ); ?></p>
-			<!-- /wp:paragraph -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.875rem","fontWeight":"600"},"spacing":{"margin":{"top":"1.5rem"}}},"textColor":"accent"} -->
-			<p class="has-accent-color has-text-color" style="margin-top:1.5rem;font-size:0.875rem;font-weight:600"><a href="#" style="color:inherit;text-decoration:none"><?php esc_html_e( 'Learn more →', 'envosta' ); ?></a></p>
-			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
-		<?php endforeach; ?>
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:group {"style":{"border":{"width":"1px","color":"var:preset|color|theme-2","radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-border-color" style="border-color:var(--wp--preset--color--theme-2);border-width:1px;border-radius:12px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+
+				<!-- wp:group {"style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"10px","right":"10px"},"margin":{"bottom":"var:preset|spacing|30"}},"dimensions":{"minHeight":"44px"},"typography":{"fontSize":"22px"}},"backgroundColor":"theme-2","layout":{"type":"flex","justifyContent":"center"}} -->
+				<div class="wp-block-group has-theme-2-background-color has-background" style="border-radius:8px;min-height:44px;margin-bottom:var(--wp--preset--spacing--30);padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;font-size:22px">
+					<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"typography":{"fontSize":"22px"}}} -->
+					<p style="margin-top:0;margin-bottom:0;font-size:22px"><?php esc_html_e('◇', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
+				<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}},"typography":{"letterSpacing":"-0.01em"}},"fontSize":"medium"} -->
+				<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--20);letter-spacing:-0.01em"><?php esc_html_e('Product design', 'envosta'); ?></h3>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"textColor":"theme-4"} -->
+				<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--30)"><?php esc_html_e('Interfaces and storefronts engineered to feel calm, fast, and inevitable under the hand.', 'envosta'); ?></p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"style":{"typography":{"fontSize":"14px","fontWeight":"500"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+				<p style="margin-top:0;margin-bottom:0;font-size:14px;font-weight:500"><a href="#"><?php esc_html_e('Learn more →', 'envosta'); ?></a></p>
+				<!-- /wp:paragraph -->
+
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:group {"style":{"border":{"width":"1px","color":"var:preset|color|theme-2","radius":"12px"},"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group has-border-color" style="border-color:var(--wp--preset--color--theme-2);border-width:1px;border-radius:12px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+
+				<!-- wp:group {"style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"10px","right":"10px"},"margin":{"bottom":"var:preset|spacing|30"}},"dimensions":{"minHeight":"44px"},"typography":{"fontSize":"22px"}},"backgroundColor":"theme-2","layout":{"type":"flex","justifyContent":"center"}} -->
+				<div class="wp-block-group has-theme-2-background-color has-background" style="border-radius:8px;min-height:44px;margin-bottom:var(--wp--preset--spacing--30);padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;font-size:22px">
+					<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"typography":{"fontSize":"22px"}}} -->
+					<p style="margin-top:0;margin-bottom:0;font-size:22px"><?php esc_html_e('◈', 'envosta'); ?></p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
+				<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}},"typography":{"letterSpacing":"-0.01em"}},"fontSize":"medium"} -->
+				<h3 class="wp-block-heading has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--20);letter-spacing:-0.01em"><?php esc_html_e('Editorial', 'envosta'); ?></h3>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"textColor":"theme-4"} -->
+				<p class="has-theme-4-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--30)"><?php esc_html_e('Voice, long-form, and campaign work that gives brands a recognizable way of speaking.', 'envosta'); ?></p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"style":{"typography":{"fontSize":"14px","fontWeight":"500"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+				<p style="margin-top:0;margin-bottom:0;font-size:14px;font-weight:500"><a href="#"><?php esc_html_e('Learn more →', 'envosta'); ?></a></p>
+				<!-- /wp:paragraph -->
+
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:column -->
+
 	</div>
 	<!-- /wp:columns -->
+
 </div>
 <!-- /wp:group -->
