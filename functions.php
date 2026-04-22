@@ -146,6 +146,11 @@ include dirname( __FILE__ ) . '/inc/mobile-menu.php';
 // WooCommerce only appears when WC is active.
 include dirname( __FILE__ ) . '/inc/pattern-categories.php';
 
+// Envosta Studio — WXR-driven site setup. When Tools → Import runs a WXR
+// exported by the Envosta Studio app, reads _envosta_* meta from the Home
+// page, applies the values to site options/theme-mods, then cleans up.
+include dirname( __FILE__ ) . '/inc/envosta-studio-setup.php';
+
 // Hide WooCommerce-only templates/parts/patterns from the Site Editor when
 // WooCommerce is not active. (The files still ship, so everything lights up
 // the moment WooCommerce is installed.)
