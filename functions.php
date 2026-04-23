@@ -139,6 +139,10 @@ add_action( 'init', 'envosta_remove_upsells' );
 if ( is_admin() )
 	include dirname( __FILE__ ) . '/inc/updater.php';
 
+// Block default attributes — makes new core/group blocks default to
+// align="full" with constrained inner-block layout.
+include dirname( __FILE__ ) . '/inc/block-defaults.php';
+
 // Mobile menu block styles: Push / Slide-Over / Slide-Down
 include dirname( __FILE__ ) . '/inc/mobile-menu.php';
 
