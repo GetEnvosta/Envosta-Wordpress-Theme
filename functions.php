@@ -171,7 +171,7 @@ add_action( 'after_setup_theme', 'envosta_load_woocommerce_integration', 5 );
 /**
  * GitHub Theme Auto-Updater
  *
- * Checks GetEnvosta/Envosta-wordpress-theme releases for new versions.
+ * Checks GetEnvosta/Envosta-Theme releases for new versions.
  * Caches the check in a 12-hour transient to respect GitHub rate limits.
  */
 if ( ! function_exists( 'envosta_github_theme_update' ) ) {
@@ -180,7 +180,9 @@ if ( ! function_exists( 'envosta_github_theme_update' ) ) {
 			return $transient;
 		}
 
-		$theme_slug      = 'Envosta-wordpress-theme';
+		// The installed theme folder name (matches the top-level folder in
+		// the release zip: envosta/).
+		$theme_slug      = 'envosta';
 		$current_version = wp_get_theme( $theme_slug )->get( 'Version' );
 
 		if ( ! $current_version ) {
@@ -188,7 +190,7 @@ if ( ! function_exists( 'envosta_github_theme_update' ) ) {
 		}
 
 		$github_user = 'GetEnvosta';
-		$github_repo = 'Envosta-wordpress-theme';
+		$github_repo = 'Envosta-Theme';
 
 		$release_data = get_transient( 'envosta_update_check' );
 
