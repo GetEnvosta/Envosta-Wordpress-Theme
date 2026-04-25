@@ -458,11 +458,6 @@
 			"title": "Header"
 		},
 		{
-			"area": "header",
-			"name": "header-hero",
-			"title": "Hero Header"
-		},
-		{
 			"area": "footer",
 			"name": "footer",
 			"title": "Footer"
