@@ -756,3 +756,81 @@ body.envosta-cart-open {
 		transition: none;
 	}
 }
+
+
+/* =========================================================================
+   Header — Shop, Centered Nav (envosta/header-shop-centered)
+
+   Desktop (≥782px):  [logo]  [navigation, centered]  [mini-cart]
+   Mobile/tablet:     [hamburger]  [logo, centered]  [mini-cart]
+
+   Sticky to top with a soft blurred backdrop on scroll.
+   ========================================================================= */
+.envosta-header-shop-centered {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	background-color: color-mix(
+		in srgb,
+		var(--wp--preset--color--theme-1, #fff) 90%,
+		transparent
+	);
+}
+
+.envosta-header-shop-centered .envosta-header-shop-centered__inner {
+	display: grid !important;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: var(--wp--preset--spacing--30);
+}
+
+/* Desktop placement */
+@media (min-width: 782px) {
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-site-logo {
+		grid-column: 1;
+		justify-self: start;
+	}
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-navigation {
+		grid-column: 2;
+		justify-self: center;
+	}
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-woocommerce-mini-cart {
+		grid-column: 3;
+		justify-self: end;
+	}
+}
+
+/* Mobile / tablet placement: hamburger left, logo center, cart right */
+@media (max-width: 781px) {
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-navigation {
+		grid-column: 1;
+		justify-self: start;
+	}
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-site-logo {
+		grid-column: 2;
+		justify-self: center;
+	}
+	.envosta-header-shop-centered .envosta-header-shop-centered__inner > .wp-block-woocommerce-mini-cart {
+		grid-column: 3;
+		justify-self: end;
+	}
+}
+
+/* =========================================================================
+   Header — Shop, Right-Aligned Actions (envosta/header-shop-actions)
+
+   Logo + site title sit left. Navigation, CTA button, mini-cart sit right.
+   On mobile/tablet the CTA button hides so the action group stays compact;
+   nav becomes a hamburger via the standard navigation overlay.
+   ========================================================================= */
+.envosta-header-shop-actions .envosta-header-shop-actions__right {
+	gap: var(--wp--preset--spacing--30);
+}
+
+@media (max-width: 781px) {
+	.envosta-header-shop-actions .envosta-header-shop-actions__cta {
+		display: none !important;
+	}
+}

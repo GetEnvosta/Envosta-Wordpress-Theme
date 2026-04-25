@@ -115,6 +115,8 @@ if ( ! function_exists( 'envosta_unregister_woo_patterns' ) ) :
 		// Envosta-registered patterns that are WC-centric.
 		$slugs = array(
 			'envosta/header-with-cart',
+			'envosta/header-shop-centered',
+			'envosta/header-shop-actions',
 		);
 		foreach ( $slugs as $slug ) {
 			$pattern = \WP_Block_Patterns_Registry::get_instance()->get_registered( $slug );
