@@ -2,17 +2,16 @@
 /**
  * Pattern categories for the Envosta theme.
  *
- * Replaces the default "Envosta / All templates" grouping in the Site
- * Editor pattern inserter with three editorial buckets:
+ * Adds two editorial buckets to the pattern inserter:
  *
- *   - Site         (headers, footers, announcement bars, layout primitives)
- *   - Blog         (post/archive-oriented content)
- *   - WooCommerce  (store, product, cart, checkout) — only registered
- *                  when WooCommerce is active, so it vanishes on
- *                  non-commerce sites.
+ *   - Site  (headers, footers, navigation, announcement bars)
+ *   - Blog  (post layouts, archives, editorial content)
  *
- * The inherited hidden-* patterns keep their upstream categories
- * intact; these new categories are for the user-facing library.
+ * WooCommerce already registers its own "WooCommerce" pattern category
+ * when active, so we don't duplicate it. Our WC-flavored patterns
+ * (header-with-cart, header-shop-*, etc.) declare
+ * `Categories: woocommerce, header` in their headers and slot into
+ * WC's bucket automatically.
  *
  * @package Envosta
  * @since   Envosta 1.0
@@ -35,13 +34,6 @@ if ( ! function_exists( 'envosta_register_pattern_categories' ) ) :
 			'label'       => __( 'Blog', 'envosta' ),
 			'description' => __( 'Post layouts, archives, and editorial content.', 'envosta' ),
 		) );
-
-		if ( class_exists( 'WooCommerce' ) ) {
-			register_block_pattern_category( 'woocommerce', array(
-				'label'       => __( 'WooCommerce', 'envosta' ),
-				'description' => __( 'Store, product, cart, and checkout patterns.', 'envosta' ),
-			) );
-		}
 	}
 endif;
 add_action( 'init', 'envosta_register_pattern_categories', 9 );
