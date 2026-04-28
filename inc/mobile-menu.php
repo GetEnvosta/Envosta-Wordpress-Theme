@@ -52,17 +52,17 @@ add_action( 'init', 'envosta_register_mobile_menu_styles' );
 
 if ( ! function_exists( 'envosta_register_mobile_menu_area' ) ) :
 	function envosta_register_mobile_menu_area( $areas ) {
-		// Skip if a previous filter already registered the "drawers" bucket
-		// (woocommerce.php may register it too when WC is active).
+		// Skip if a previous filter already registered the "overlays"
+		// bucket (so the registration is idempotent).
 		foreach ( $areas as $existing ) {
-			if ( isset( $existing['area'] ) && 'drawers' === $existing['area'] ) {
+			if ( isset( $existing['area'] ) && 'overlays' === $existing['area'] ) {
 				return $areas;
 			}
 		}
 		$areas[] = array(
-			'area'        => 'drawers',
-			'label'       => __( 'Menu Drawers', 'envosta' ),
-			'description' => __( 'Slide-out panels triggered by buttons or icons — mobile menu, mini-cart, and similar.', 'envosta' ),
+			'area'        => 'overlays',
+			'label'       => __( 'Overlays', 'envosta' ),
+			'description' => __( 'Floating layers over the page — drawers, pop-ups, modals, the mobile menu, and similar.', 'envosta' ),
 			'icon'        => 'menu',
 			'area_tag'    => 'div',
 		);
@@ -85,7 +85,7 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 		$theme             = get_stylesheet();
 		$close_label       = __( 'Close menu', 'envosta' );
 
-		$inner = do_blocks( '<!-- wp:template-part {"slug":"mobile-menu","theme":"' . esc_attr( $theme ) . '","area":"drawers","tagName":"div"} /-->' );
+		$inner = do_blocks( '<!-- wp:template-part {"slug":"mobile-menu","theme":"' . esc_attr( $theme ) . '","area":"overlays","tagName":"div"} /-->' );
 
 		// If the part is missing (fresh install before the file is registered),
 		// fall back to a plain navigation block so the drawer still opens.

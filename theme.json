@@ -488,12 +488,12 @@
 			"title": "WooCommerce Variable Product"
 		},
 		{
-			"area": "drawers",
+			"area": "overlays",
 			"name": "mini-cart",
 			"title": "WooCommerce Mini Cart"
 		},
 		{
-			"area": "drawers",
+			"area": "overlays",
 			"name": "mobile-menu",
 			"title": "Mobile Menu"
 		}
