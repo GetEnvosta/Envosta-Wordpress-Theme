@@ -29,17 +29,25 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! function_exists( 'envosta_register_mobile_menu_styles' ) ) :
 	function envosta_register_mobile_menu_styles() {
+		// Three mobile menu drawer variants. Apply any of these to a
+		// core/navigation block and the auto-generated hamburger button
+		// will open the Envosta drawer (mobile-menu template part)
+		// instead of WP's native responsive overlay.
+		//
+		// To keep WP's NATIVE responsive overlay (just the nav links,
+		// no extra content), simply don't apply one of these styles —
+		// leave the navigation block on the default style.
 		register_block_style( 'core/navigation', array(
 			'name'  => 'push',
-			'label' => __( 'Mobile: Push', 'envosta' ),
+			'label' => __( 'Mobile Drawer: Push', 'envosta' ),
 		) );
 		register_block_style( 'core/navigation', array(
 			'name'  => 'slide-over',
-			'label' => __( 'Mobile: Slide-Over', 'envosta' ),
+			'label' => __( 'Mobile Drawer: Slide-Over', 'envosta' ),
 		) );
 		register_block_style( 'core/navigation', array(
 			'name'  => 'slide-down',
-			'label' => __( 'Mobile: Slide-Down', 'envosta' ),
+			'label' => __( 'Mobile Drawer: Slide-Down', 'envosta' ),
 		) );
 	}
 endif;

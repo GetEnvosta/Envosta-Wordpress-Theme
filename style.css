@@ -424,168 +424,21 @@ input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]
 
 
 /* =========================================================================
-   Mobile menu variants — block styles registered in inc/mobile-menu.php
-   as is-style-push / is-style-slide-over / is-style-slide-down on
-   core/navigation. Only active below the mobile breakpoint (599.98px).
+   Mobile menu — keyframes shared with the drawer system below.
 
-   Implementation note: WordPress's responsive overlay toggles
-   `.is-menu-open` and `.has-modal-open` at the same instant, so there's
-   no "closed" state to transition FROM — we use @keyframes for the
-   entry animation and let WP's own JS handle the close (which removes
-   the classes, hiding the panel via WP's default rules).
-
-   We deliberately do NOT translate <body> for the "push" variant: a
-   transform on body creates a new containing block for position:fixed
-   children, which would move the menu panel itself offscreen.
+   The three core/navigation block styles (is-style-push /
+   is-style-slide-over / is-style-slide-down) registered in
+   inc/mobile-menu.php are now wired up by assets/js/mobile-menu.js to
+   open the Envosta drawer (with the editable mobile-menu template
+   part inside) instead of WP's bare responsive overlay. Author flow:
+   apply the style, the auto-rendered hamburger triggers our drawer.
    ========================================================================= */
-
-@media (max-width: 599.98px) {
-
-	/* Container = full-viewport backdrop. The inner content element is the
-	   actual panel that slides. This split lets us catch backdrop taps
-	   on the container itself (see assets/js/mobile-menu.js) and animate
-	   the panel without translating the parent. */
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open {
-		position: fixed !important;
-		inset: 0 !important;
-		width: auto !important;
-		height: auto !important;
-		max-width: none !important;
-		z-index: 100000;
-		background: rgba(0, 0, 0, 0.4) !important;
-		padding: 0 !important;
-		animation: envosta-backdrop-in 0.2s ease both;
-	}
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.envosta-closing,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.envosta-closing,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.envosta-closing {
-		animation: envosta-backdrop-out 0.22s ease both;
-	}
-	@keyframes envosta-backdrop-in {
-		from { background: rgba(0, 0, 0, 0); }
-		to   { background: rgba(0, 0, 0, 0.4); }
-	}
-	@keyframes envosta-backdrop-out {
-		from { background: rgba(0, 0, 0, 0.4); }
-		to   { background: rgba(0, 0, 0, 0); }
-	}
-
-	/* Slide-down has no backdrop tint — it covers the whole viewport. */
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open {
-		background: transparent !important;
-		animation: none;
-	}
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.envosta-closing {
-		animation: none;
-	}
-
-	/* Inner panel — shared layout across the three variants. */
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
-		position: absolute !important;
-		top: 0 !important;
-		bottom: 0 !important;
-		background: var(--wp--preset--color--theme-1, #fff) !important;
-		color: var(--wp--preset--color--theme-4, #1e1e1e) !important;
-		padding: 4rem 1.5rem 2rem !important;
-		overflow-y: auto;
-		overscroll-behavior: contain;
-		display: flex !important;
-		flex-direction: column !important;
-		align-items: flex-start !important;
-		justify-content: flex-start !important;
-		gap: 1rem;
-	}
-
-	/* All three variants now use the full viewport. */
-
-	/* -- Push: full-screen from the left, page canvas slides out -------- */
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
-		left: 0 !important;
-		right: 0 !important;
-		width: 100vw !important;
-		animation: envosta-push-in 0.36s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content {
-		animation: envosta-push-out 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	@keyframes envosta-push-in   { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-	@keyframes envosta-push-out  { from { transform: translateX(0); }    to { transform: translateX(-100%); } }
-
-	/* -- Slide-Over: full-screen from the right ------------------------- */
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
-		right: 0 !important;
-		left: 0 !important;
-		width: 100vw !important;
-		animation: envosta-slide-over-in 0.36s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content {
-		animation: envosta-slide-over-out 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	@keyframes envosta-slide-over-in   { from { transform: translateX(100%); }  to { transform: translateX(0); } }
-	@keyframes envosta-slide-over-out  { from { transform: translateX(0); }     to { transform: translateX(100%); } }
-
-	/* -- Slide-Down: full-screen from the top --------------------------- */
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
-		left: 0 !important;
-		right: 0 !important;
-		width: 100% !important;
-		height: 100dvh;
-		animation: envosta-slide-down-in 0.40s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content {
-		animation: envosta-slide-down-out 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
-	}
-	@keyframes envosta-slide-down-in   { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-	@keyframes envosta-slide-down-out  { from { transform: translateY(0); }    to { transform: translateY(-100%); } }
-
-	/* Vertical menu list inside the panel. */
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container .wp-block-navigation__container,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container .wp-block-navigation__container,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container .wp-block-navigation__container {
-		flex-direction: column !important;
-		align-items: flex-start !important;
-		gap: 0.75rem;
-		font-size: 1.25rem;
-		font-weight: 500;
-		width: 100%;
-	}
-
-	/* Close button stays accessible in the panel's top-right. */
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container-close,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container-close,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container-close {
-		z-index: 1;
-	}
-
-	/* Lock the page behind the open menu so it doesn't double-scroll. */
-	body:has(.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open),
-	body:has(.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open),
-	body:has(.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open) {
-		overflow: hidden;
-	}
-}
-
-/* Disable entry/exit animations under prefers-reduced-motion. */
-@media (prefers-reduced-motion: reduce) {
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open,
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.envosta-closing,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.envosta-closing,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.envosta-closing,
-	.wp-block-navigation.is-style-push .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-over .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content,
-	.wp-block-navigation.is-style-slide-down .wp-block-navigation__responsive-container.envosta-closing .wp-block-navigation__responsive-container-content {
-		animation: none !important;
-	}
-}
+@keyframes envosta-push-in        { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes envosta-push-out       { from { transform: translateX(0); }    to { transform: translateX(-100%); } }
+@keyframes envosta-slide-over-in  { from { transform: translateX(100%); }  to { transform: translateX(0); } }
+@keyframes envosta-slide-over-out { from { transform: translateX(0); }     to { transform: translateX(100%); } }
+@keyframes envosta-slide-down-in  { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes envosta-slide-down-out { from { transform: translateY(0); }    to { transform: translateY(-100%); } }
 
 
 /* =========================================================================
