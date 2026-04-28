@@ -1,18 +1,25 @@
 /**
- * Envosta — Mobile menu drawer (template-part backed).
+ * Envosta — Overlay drawer system (template-part backed).
  *
- * Companion to inc/mobile-menu.php. Wires up:
+ * Companion to inc/mobile-menu.php. Renders one drawer per registered
+ * overlay (mobile-menu, mini-cart, ...) into wp_footer. Any clickable
+ * element with [data-envosta-overlay-open="<slug>"] (and an optional
+ * [data-direction="push|slide-over|slide-down"]) opens the matching
+ * drawer.
  *
- *   • Click on [data-envosta-mobile-menu-open] → open the drawer.
- *     The trigger may set data-direction="push|slide-over|slide-down"
- *     to override the default direction for that opening.
- *   • Click on [data-envosta-mobile-menu-close] (close button or backdrop)
- *     → animate out, then hide.
- *   • Escape key → close.
- *   • Focus is moved to the close button on open and returned to the
- *     trigger on close.
- *   • Body gets `envosta-mobile-menu-open` while the drawer is visible
- *     so CSS can lock scroll.
+ * Backwards-compatible: [data-envosta-mobile-menu-open] still works
+ * and routes to the 'mobile-menu' overlay.
+ *
+ *   • Click on a trigger → open the matching drawer with the
+ *     requested direction.
+ *   • Click on [data-envosta-mobile-menu-close] (close button or
+ *     backdrop) → animate out, then hide.
+ *   • Escape → close any open drawer.
+ *   • Focus moves to the close button on open and back to the trigger
+ *     on close.
+ *   • Body gets `envosta-mobile-menu-open` while any drawer is open
+ *     so CSS can lock scroll. Push variants also get
+ *     `envosta-mobile-menu-push-active` so the page canvas slides.
  *
  * @package Envosta
  */
@@ -25,8 +32,13 @@
 	var DIRECTIONS = [ 'push', 'slide-over', 'slide-down' ];
 	var SAFETY_MS  = 400;
 
-	function getDrawer() {
-		return document.querySelector( '[data-envosta-mobile-menu-drawer]' );
+	function getDrawer( slug ) {
+		if ( ! slug ) slug = 'mobile-menu';
+		return document.querySelector( '[data-envosta-overlay="' + slug + '"]' );
+	}
+
+	function getOpenDrawer() {
+		return document.querySelector( '[data-envosta-overlay].is-open' );
 	}
 
 	function setDirection( drawer, direction ) {
@@ -39,14 +51,13 @@
 
 	var lastTrigger = null;
 
-	function openDrawer( trigger ) {
-		var drawer = getDrawer();
+	function openDrawer( slug, direction, trigger ) {
+		var drawer = getDrawer( slug );
 		if ( ! drawer ) return;
 
 		lastTrigger = trigger || null;
 
-		var dir = trigger && trigger.getAttribute( 'data-direction' );
-		setDirection( drawer, dir );
+		setDirection( drawer, direction );
 
 		drawer.hidden = false;
 		// Force layout flush so the entry animation runs.
@@ -69,8 +80,8 @@
 		}
 	}
 
-	function closeDrawer() {
-		var drawer = getDrawer();
+	function closeDrawer( drawer ) {
+		drawer = drawer || getOpenDrawer();
 		if ( ! drawer || ! drawer.classList.contains( 'is-open' ) ) return;
 
 		var panel = drawer.querySelector( '.envosta-mobile-menu-drawer__panel' );
@@ -90,8 +101,8 @@
 			lastTrigger = null;
 		}
 
-		// Trigger canvas slide-back BEFORE the panel exit animation starts
-		// so both run together smoothly.
+		// Trigger canvas slide-back BEFORE the panel exit animation
+		// starts so both run in lockstep.
 		document.body.classList.remove( 'envosta-mobile-menu-push-active' );
 
 		drawer.classList.add( 'envosta-closing' );
@@ -99,32 +110,37 @@
 		if ( panel ) {
 			panel.addEventListener( 'animationend', finish, { once: true } );
 		}
-		// Safety net for reduced-motion / interrupted animations.
 		setTimeout( finish, SAFETY_MS );
 	}
 
 	/* -- Events -------------------------------------------------------- */
 
 	document.addEventListener( 'click', function ( event ) {
-		var openTrigger = event.target.closest( '[data-envosta-mobile-menu-open]' );
+		// Open trigger — supports both new attr and legacy attr.
+		var openTrigger = event.target.closest( '[data-envosta-overlay-open], [data-envosta-mobile-menu-open]' );
 		if ( openTrigger ) {
 			event.preventDefault();
-			openDrawer( openTrigger );
+			var slug = openTrigger.getAttribute( 'data-envosta-overlay-open' )
+				|| ( openTrigger.hasAttribute( 'data-envosta-mobile-menu-open' ) ? 'mobile-menu' : '' );
+			var dir  = openTrigger.getAttribute( 'data-direction' );
+			openDrawer( slug, dir, openTrigger );
 			return;
 		}
 
+		// Close trigger.
 		var closeTrigger = event.target.closest( '[data-envosta-mobile-menu-close]' );
 		if ( closeTrigger ) {
 			event.preventDefault();
-			closeDrawer();
+			var owningDrawer = closeTrigger.closest( '[data-envosta-overlay]' );
+			closeDrawer( owningDrawer );
 		}
 	}, false );
 
 	document.addEventListener( 'keydown', function ( event ) {
 		if ( event.key !== 'Escape' && event.key !== 'Esc' ) return;
-		var drawer = getDrawer();
-		if ( ! drawer || ! drawer.classList.contains( 'is-open' ) ) return;
-		closeDrawer();
+		var drawer = getOpenDrawer();
+		if ( ! drawer ) return;
+		closeDrawer( drawer );
 	} );
 
 } )();

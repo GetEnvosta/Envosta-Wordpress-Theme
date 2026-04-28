@@ -1,16 +1,19 @@
 /**
- * Envosta — Native navigation block as a drawer trigger.
+ * Envosta — Hijack core/navigation and woocommerce/mini-cart clicks.
  *
- * When a core/navigation block has one of our three block styles
- * applied (is-style-push / is-style-slide-over / is-style-slide-down),
- * we hijack WordPress's built-in hamburger button so it opens the
- * Envosta mobile menu drawer (rendered in the footer, populated by
- * the editable mobile-menu template part) instead of WP's bare
- * responsive overlay.
+ * When either block has one of our directional block styles applied
+ * (is-style-push / is-style-slide-over / is-style-slide-down), we
+ * intercept the click on the auto-rendered button and route to the
+ * Envosta overlay drawer system (loading the editable mobile-menu or
+ * mini-cart template part).
  *
- * Author flow: drop a Navigation block in the header, apply a Mobile
- * block style — that's it. The hamburger that auto-appears on small
- * screens now drives the rich drawer.
+ * Author flow:
+ *   - Drop a Navigation block, apply Push/Slide Over/Slide Down →
+ *     hamburger drives the mobile-menu drawer.
+ *   - Drop a WooCommerce Mini Cart block, apply same styles → cart
+ *     icon drives the mini-cart drawer.
+ *   - Leave either on the default style → block keeps its native
+ *     WP/WC behavior.
  *
  * @package Envosta
  */
@@ -20,58 +23,66 @@
 
 	if ( typeof document === 'undefined' ) return;
 
-	var ENVOSTA_NAV_SEL = [
-		'.wp-block-navigation.is-style-push',
-		'.wp-block-navigation.is-style-slide-over',
-		'.wp-block-navigation.is-style-slide-down'
-	].join( ', ' );
+	var DIRECTIONAL_STYLE_RE = /(?:^|\s)is-style-(push|slide-over|slide-down)(?:\s|$)/;
 
-	function directionFor( navBlock ) {
-		if ( navBlock.classList.contains( 'is-style-push' ) )       return 'push';
-		if ( navBlock.classList.contains( 'is-style-slide-down' ) ) return 'slide-down';
-		return 'slide-over';
+	function directionFor( el ) {
+		var match = ( el.className || '' ).match( DIRECTIONAL_STYLE_RE );
+		return match ? match[ 1 ] : '';
 	}
 
-	/**
-	 * Intercept clicks on WordPress's hamburger button (the open-overlay
-	 * button) when the parent navigation block has one of our mobile
-	 * styles. Fire a synthetic click on a hidden trigger so
-	 * mobile-menu-drawer.js opens the drawer with the matching direction.
-	 *
-	 * Capture phase so we beat WP's interactivity-API listener that
-	 * would otherwise show its bare overlay.
-	 */
-	document.addEventListener( 'click', function ( event ) {
-		var openBtn = event.target.closest( '.wp-block-navigation__responsive-container-open' );
-		if ( ! openBtn ) return;
-
-		var navBlock = openBtn.closest( ENVOSTA_NAV_SEL );
-		if ( ! navBlock ) return; // not one of our styles — let WP handle it
-
-		event.preventDefault();
-		event.stopImmediatePropagation();
-
-		var direction = directionFor( navBlock );
-
-		// Forward to the drawer system. mobile-menu-drawer.js listens for
-		// clicks on [data-envosta-mobile-menu-open] and reads
-		// [data-direction]. We synthesize a temporary trigger so the
-		// drawer's open handler runs through its normal code path
-		// (focus management, body classes, push-canvas effect, etc.).
+	function fireOverlay( slug, direction ) {
+		// Synthesize a hidden trigger so mobile-menu-drawer.js's open
+		// handler runs through its normal code path (focus, scroll
+		// lock, push canvas, etc.).
 		var fake = document.createElement( 'button' );
 		fake.type = 'button';
-		fake.setAttribute( 'data-envosta-mobile-menu-open', '' );
-		fake.setAttribute( 'data-direction', direction );
+		fake.setAttribute( 'data-envosta-overlay-open', slug );
+		if ( direction ) fake.setAttribute( 'data-direction', direction );
 		fake.style.position = 'fixed';
 		fake.style.left = '-9999px';
 		fake.setAttribute( 'aria-hidden', 'true' );
 		document.body.appendChild( fake );
-
-		// Click triggers the drawer; remove the fake right after.
 		fake.click();
 		setTimeout( function () {
 			if ( fake.parentNode ) fake.parentNode.removeChild( fake );
 		}, 0 );
-	}, true ); // capture
+	}
+
+	/* ---- Hijack: core/navigation hamburger ----------------------------- */
+	document.addEventListener( 'click', function ( event ) {
+		var openBtn = event.target.closest( '.wp-block-navigation__responsive-container-open' );
+		if ( ! openBtn ) return;
+
+		var navBlock = openBtn.closest( '.wp-block-navigation' );
+		if ( ! navBlock ) return;
+
+		var dir = directionFor( navBlock );
+		if ( ! dir ) return; // default style — let WP handle it natively
+
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		fireOverlay( 'mobile-menu', dir );
+	}, true );
+
+	/* ---- Hijack: woocommerce/mini-cart icon ---------------------------- */
+	document.addEventListener( 'click', function ( event ) {
+		// WC's mini-cart block renders a button; in newer versions it
+		// has class .wc-block-mini-cart__button. Walk up to find the
+		// containing block and check its directional style.
+		var miniCartBlock = event.target.closest( '.wp-block-woocommerce-mini-cart' );
+		if ( ! miniCartBlock ) return;
+
+		var dir = directionFor( miniCartBlock );
+		if ( ! dir ) return; // default style — let WC's own drawer open
+
+		// Make sure the click was on something that would actually
+		// open WC's drawer (the button or the icon inside it).
+		var trigger = event.target.closest( 'button, a' );
+		if ( ! trigger || ! miniCartBlock.contains( trigger ) ) return;
+
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		fireOverlay( 'mini-cart', dir );
+	}, true );
 
 } )();

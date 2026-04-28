@@ -85,43 +85,48 @@ add_filter( 'default_wp_template_part_areas', 'envosta_register_mobile_menu_area
  *    via JS when a trigger fires.
  * ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
-	function envosta_render_mobile_menu_drawer() {
-		if ( is_admin() ) return;
-
-		$default_direction = apply_filters( 'envosta_mobile_menu_default_direction', 'slide-over' );
-		$close_label       = __( 'Close menu', 'envosta' );
-
-		// Resolve the mobile-menu template part the same way the
-		// woocommerce/mini-cart block resolves its template part —
-		// look up the template post (DB-edited overrides win) and
-		// fall back to the file shipped in /parts/. Then run its
-		// content through do_blocks so inner blocks render.
-		$inner    = '';
+/**
+ * Resolve a template part the same way the woocommerce/mini-cart block
+ * resolves its own — DB record (Site-Editor edits) wins, then the
+ * shipped file under /parts/{slug}.html, then null.
+ */
+if ( ! function_exists( 'envosta_resolve_template_part' ) ) :
+	function envosta_resolve_template_part( $slug ) {
+		$id       = get_stylesheet() . '//' . $slug;
 		$template = null;
 
 		if ( function_exists( 'get_block_template' ) ) {
-			$template = get_block_template( get_stylesheet() . '//mobile-menu', 'wp_template_part' );
+			$template = get_block_template( $id, 'wp_template_part' );
 		}
 		if ( ! $template && function_exists( 'get_block_file_template' ) ) {
-			$template = get_block_file_template( get_stylesheet() . '//mobile-menu', 'wp_template_part' );
+			$template = get_block_file_template( $id, 'wp_template_part' );
 		}
+		return $template && ! empty( $template->content ) ? $template->content : '';
+	}
+endif;
 
-		if ( $template && ! empty( $template->content ) ) {
-			$inner = do_blocks( $template->content );
-		}
-
-		// Final safety net: if the part is missing entirely (fresh
-		// install before the file is registered), fall back to a
-		// plain navigation block so the drawer still opens.
+/**
+ * Render a single drawer container in wp_footer. Used for both the
+ * mobile-menu overlay and (when WooCommerce is active) the mini-cart
+ * overlay. Drawers are identified on the JS side by data-envosta-overlay.
+ *
+ * @param string $slug          Template part slug to load (e.g. 'mobile-menu').
+ * @param string $default_dir   'push' | 'slide-over' | 'slide-down'.
+ * @param string $aria_label    Accessible label for the dialog.
+ * @param string $close_label   Accessible label for the close button.
+ * @param string $fallback_html Markup used if the template part resolves empty.
+ */
+if ( ! function_exists( 'envosta_render_overlay_drawer' ) ) :
+	function envosta_render_overlay_drawer( $slug, $default_dir, $aria_label, $close_label, $fallback_html = '' ) {
+		$content = envosta_resolve_template_part( $slug );
+		$inner   = $content ? do_blocks( $content ) : '';
 		if ( '' === trim( wp_strip_all_tags( $inner ) ) ) {
-			$inner = do_blocks( '<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->' );
+			$inner = $fallback_html;
 		}
-
 		?>
 		<div
-			class="envosta-mobile-menu-drawer is-style-<?php echo esc_attr( $default_direction ); ?>"
-			data-envosta-mobile-menu-drawer
+			class="envosta-mobile-menu-drawer is-style-<?php echo esc_attr( $default_dir ); ?>"
+			data-envosta-overlay="<?php echo esc_attr( $slug ); ?>"
 			aria-hidden="true"
 			hidden
 		>
@@ -130,7 +135,7 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 				class="envosta-mobile-menu-drawer__panel"
 				role="dialog"
 				aria-modal="true"
-				aria-label="<?php esc_attr_e( 'Mobile menu', 'envosta' ); ?>"
+				aria-label="<?php echo esc_attr( $aria_label ); ?>"
 				tabindex="-1"
 			>
 				<button
@@ -151,7 +156,66 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 		<?php
 	}
 endif;
+
+/**
+ * Render all overlay drawers once per page.
+ */
+if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
+	function envosta_render_mobile_menu_drawer() {
+		if ( is_admin() ) return;
+
+		$default_direction = apply_filters( 'envosta_mobile_menu_default_direction', 'slide-over' );
+
+		// Mobile menu overlay.
+		envosta_render_overlay_drawer(
+			'mobile-menu',
+			$default_direction,
+			__( 'Mobile menu', 'envosta' ),
+			__( 'Close menu', 'envosta' ),
+			do_blocks( '<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->' )
+		);
+
+		// Mini-cart overlay — only when WooCommerce is active.
+		if ( class_exists( 'WooCommerce' ) ) {
+			$cart_default_direction = apply_filters( 'envosta_mini_cart_default_direction', 'slide-over' );
+			envosta_render_overlay_drawer(
+				'mini-cart',
+				$cart_default_direction,
+				__( 'Cart', 'envosta' ),
+				__( 'Close cart', 'envosta' ),
+				do_blocks( '<!-- wp:woocommerce/mini-cart-contents /-->' )
+			);
+		}
+	}
+endif;
 add_action( 'wp_footer', 'envosta_render_mobile_menu_drawer', 50 );
+
+/* ---------------------------------------------------------------------------
+ * 3a. Register Push / Slide Over / Slide Down block styles on the
+ *     woocommerce/mini-cart block. When applied, JS hijacks the cart
+ *     icon click and opens the Envosta mini-cart overlay drawer
+ *     (loading the editable mini-cart template part) with the chosen
+ *     direction. Default style = WC's native slide-over drawer.
+ * ------------------------------------------------------------------------- */
+
+if ( ! function_exists( 'envosta_register_mini_cart_styles' ) ) :
+	function envosta_register_mini_cart_styles() {
+		if ( ! class_exists( 'WooCommerce' ) ) return;
+		register_block_style( 'woocommerce/mini-cart', array(
+			'name'  => 'push',
+			'label' => __( 'Push', 'envosta' ),
+		) );
+		register_block_style( 'woocommerce/mini-cart', array(
+			'name'  => 'slide-over',
+			'label' => __( 'Slide Over', 'envosta' ),
+		) );
+		register_block_style( 'woocommerce/mini-cart', array(
+			'name'  => 'slide-down',
+			'label' => __( 'Slide Down', 'envosta' ),
+		) );
+	}
+endif;
+add_action( 'init', 'envosta_register_mini_cart_styles', 20 );
 
 /* ---------------------------------------------------------------------------
  * 4. Enqueue scripts.
