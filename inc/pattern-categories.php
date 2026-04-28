@@ -26,3 +26,25 @@ if ( ! function_exists( 'envosta_register_pattern_categories' ) ) :
 	}
 endif;
 add_action( 'init', 'envosta_register_pattern_categories', 9 );
+
+/**
+ * Disable WordPress's remote pattern fetcher.
+ *
+ * WP 6.x pulls curated patterns from wordpress.org/patterns and shows
+ * them in the inserter. They don't match Envosta's typography or
+ * spacing, and they make the inserter feel cluttered alongside our
+ * own curated patterns. Hide them.
+ */
+add_filter( 'should_load_remote_block_patterns', '__return_false' );
+
+/**
+ * Also drop the core WP patterns that ship inside core itself
+ * (separate from the remote ones). Keeps the inserter showing only
+ * our patterns + WooCommerce's when WC is active.
+ */
+if ( ! function_exists( 'envosta_remove_core_pattern_support' ) ) :
+	function envosta_remove_core_pattern_support() {
+		remove_theme_support( 'core-block-patterns' );
+	}
+endif;
+add_action( 'after_setup_theme', 'envosta_remove_core_pattern_support', 11 );
