@@ -994,3 +994,85 @@ body.envosta-mobile-menu-open {
 		transition: none !important;
 	}
 }
+
+/* -- Defensive content styling ------------------------------------------ */
+/* These rules target what's rendered inside the editable mobile-menu
+   template part so the default content always looks intentional, even
+   if the author hasn't tweaked anything in the Site Editor yet. */
+
+.envosta-mobile-menu-drawer__content {
+	width: 100%;
+}
+.envosta-mobile-menu-drawer__content > .wp-block-template-part,
+.envosta-mobile-menu-drawer__content > .wp-block-template-part > .wp-block-group {
+	width: 100%;
+	max-width: 100%;
+}
+
+/* Search field: full-width, generous height. */
+.envosta-mobile-menu-drawer__content .wp-block-search__inside-wrapper {
+	width: 100%;
+}
+.envosta-mobile-menu-drawer__content .wp-block-search__input {
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+	border: 1px solid var(--wp--preset--color--theme-2, #eee);
+	border-radius: 8px;
+	background: transparent;
+}
+
+/* Vertical navigation: stack, large tap targets, comfortable rhythm. */
+.envosta-mobile-menu-drawer__content .wp-block-navigation,
+.envosta-mobile-menu-drawer__content .wp-block-navigation .wp-block-navigation__container {
+	width: 100%;
+}
+.envosta-mobile-menu-drawer__content .wp-block-navigation .wp-block-navigation__container {
+	flex-direction: column !important;
+	align-items: stretch !important;
+	gap: 0;
+}
+.envosta-mobile-menu-drawer__content .wp-block-navigation .wp-block-navigation-item {
+	width: 100%;
+}
+.envosta-mobile-menu-drawer__content .wp-block-navigation .wp-block-navigation-item__content {
+	display: block;
+	width: 100%;
+	padding: 0.85rem 0;
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
+	text-decoration: none;
+	border-bottom: 1px solid var(--wp--preset--color--theme-2, #eee);
+}
+.envosta-mobile-menu-drawer__content .wp-block-navigation .wp-block-navigation-item:last-child .wp-block-navigation-item__content {
+	border-bottom: 0;
+}
+
+/* Separator: subtle, theme-2 line. */
+.envosta-mobile-menu-drawer__content .wp-block-separator {
+	width: 100%;
+	margin: 0;
+	border: 0;
+	border-top: 1px solid var(--wp--preset--color--theme-2, #eee);
+	background: transparent;
+	opacity: 1;
+}
+
+/* Social links: centered, slightly larger icons. */
+.envosta-mobile-menu-drawer__content .wp-block-social-links {
+	justify-content: center;
+	gap: 1rem;
+}
+.envosta-mobile-menu-drawer__content .wp-block-social-links .wp-block-social-link {
+	width: 2.25rem;
+	height: 2.25rem;
+}
+
+/* Respect device safe areas (iPhone notches, Android bottom nav). */
+.envosta-mobile-menu-drawer__panel {
+	padding-top: env(safe-area-inset-top);
+	padding-bottom: env(safe-area-inset-bottom);
+}
