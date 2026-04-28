@@ -77,7 +77,10 @@ if ( ! function_exists( 'envosta_render_cart_drawer' ) ) :
 					>&times;</button>
 				</header>
 				<div class="envosta-cart-drawer__body">
-					<?php echo do_shortcode( '[woocommerce_mini_cart]' ); ?>
+					<?php
+					// WooCommerce shortcode output is trusted (no user input).
+					echo do_shortcode( '[woocommerce_mini_cart]' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
 				</div>
 			</div>
 		</aside>
@@ -106,27 +109,6 @@ if ( ! function_exists( 'envosta_cart_fragments' ) ) :
 endif;
 add_filter( 'woocommerce_add_to_cart_fragments', 'envosta_cart_fragments' );
 
-/**
- * Auto-open the cart drawer on add-to-cart. The JS listens for this
- * via a body data attribute.
- */
-if ( ! function_exists( 'envosta_auto_open_cart_on_add' ) ) :
-	function envosta_auto_open_cart_on_add() {
-		if ( ! is_singular( 'product' ) && ! is_shop() && ! is_product_category() && ! is_product_tag() ) return;
-		?>
-		<script>
-			document.addEventListener( 'DOMContentLoaded', function () {
-				if ( typeof jQuery === 'undefined' ) return;
-				jQuery( document.body ).on( 'added_to_cart', function () {
-					var drawer = document.getElementById( 'envosta-cart-drawer' );
-					if ( drawer ) drawer.classList.add( 'is-open' );
-				} );
-			} );
-		</script>
-		<?php
-	}
-endif;
-add_action( 'wp_footer', 'envosta_auto_open_cart_on_add', 60 );
 
 /**
  * Shopify-style "Sale" badge (pill, not flag).
@@ -173,42 +155,17 @@ endif;
 add_filter( 'woocommerce_breadcrumb_defaults', 'envosta_breadcrumb_defaults' );
 
 /**
- * Inline JS for the cart drawer open/close interactions. Kept tiny
- * and dependency-free so the Shopify cart experience works the
- * moment WooCommerce is activated — no config required.
+ * Enqueue the cart drawer interaction script.
  */
-if ( ! function_exists( 'envosta_cart_drawer_js' ) ) :
-	function envosta_cart_drawer_js() {
-		?>
-		<script>
-		( function () {
-			var drawer = document.getElementById( 'envosta-cart-drawer' );
-			if ( ! drawer ) return;
-
-			function openCart( e ) {
-				if ( e ) e.preventDefault();
-				drawer.classList.add( 'is-open' );
-				drawer.setAttribute( 'aria-hidden', 'false' );
-				document.body.classList.add( 'envosta-cart-open' );
-			}
-			function closeCart() {
-				drawer.classList.remove( 'is-open' );
-				drawer.setAttribute( 'aria-hidden', 'true' );
-				document.body.classList.remove( 'envosta-cart-open' );
-			}
-
-			document.addEventListener( 'click', function ( e ) {
-				var open  = e.target.closest( '[data-envosta-cart-open]' );
-				var close = e.target.closest( '[data-envosta-cart-close]' );
-				if ( open )  openCart( e );
-				if ( close ) closeCart();
-			} );
-			document.addEventListener( 'keydown', function ( e ) {
-				if ( e.key === 'Escape' && drawer.classList.contains( 'is-open' ) ) closeCart();
-			} );
-		} )();
-		</script>
-		<?php
+if ( ! function_exists( 'envosta_enqueue_cart_drawer_js' ) ) :
+	function envosta_enqueue_cart_drawer_js() {
+		wp_enqueue_script(
+			'envosta-cart-drawer',
+			get_template_directory_uri() . '/assets/js/cart-drawer.js',
+			array( 'jquery' ),
+			wp_get_theme()->get( 'Version' ),
+			array( 'in_footer' => true, 'strategy' => 'defer' )
+		);
 	}
 endif;
-add_action( 'wp_footer', 'envosta_cart_drawer_js', 70 );
+add_action( 'wp_enqueue_scripts', 'envosta_enqueue_cart_drawer_js' );

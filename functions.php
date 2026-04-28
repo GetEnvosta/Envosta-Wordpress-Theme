@@ -10,6 +10,8 @@
 
 declare( strict_types = 1 );
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! function_exists( 'envosta_unregister_patterns' ) ) :
 	/**
 	 * Unregister Jetpack patterns and core patterns bundled in WordPress.
@@ -135,10 +137,6 @@ endif;
 add_action( 'init', 'envosta_remove_upsells' );
 
 
-// updater for WordPress.com themes
-if ( is_admin() )
-	include dirname( __FILE__ ) . '/inc/updater.php';
-
 // Block default attributes — makes new core/group blocks default to
 // align="full" with constrained inner-block layout.
 include dirname( __FILE__ ) . '/inc/block-defaults.php';
@@ -166,13 +164,13 @@ include dirname( __FILE__ ) . '/inc/hide-woo-templates.php';
 // WooCommerce integration — loads only when WooCommerce is active so the
 // theme auto-detects a store setup and ships the Shopify-style cart drawer,
 // product gallery features, and preset-ready templates the moment Woo is on.
-if ( ! function_exists( 'envosta_load_woocommerce_integration' ) ) {
+if ( ! function_exists( 'envosta_load_woocommerce_integration' ) ) :
 	function envosta_load_woocommerce_integration() {
 		if ( class_exists( 'WooCommerce' ) ) {
 			include dirname( __FILE__ ) . '/inc/woocommerce.php';
 		}
 	}
-}
+endif;
 add_action( 'after_setup_theme', 'envosta_load_woocommerce_integration', 5 );
 
 /**
