@@ -27,7 +27,7 @@
 
 	if ( typeof document === 'undefined' ) return;
 
-	var DIRECTIONS = [ 'push-right', 'push-left', 'slide-right', 'slide-left', 'slide-down' ];
+	var DIRECTIONS = [ 'push-right', 'push-left', 'overlay-right', 'overlay-left', 'slide-down' ];
 	var SIZES      = [ 'size-25', 'size-50', 'size-75', 'size-100' ];
 	var SAFETY_MS  = 400;
 

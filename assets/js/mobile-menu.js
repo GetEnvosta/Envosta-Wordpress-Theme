@@ -24,7 +24,7 @@
 
 	if ( typeof document === 'undefined' ) return;
 
-	var DIRECTIONAL_STYLE_RE = /(?:^|\s)is-style-(push-right|push-left|slide-right|slide-left|slide-down)(?:\s|$)/;
+	var DIRECTIONAL_STYLE_RE = /(?:^|\s)is-style-(push-right|push-left|overlay-right|overlay-left|slide-down)(?:\s|$)/;
 	var SIZE_CLASS_RE        = /(?:^|\s)(size-25|size-50|size-75|size-100)(?:\s|$)/;
 
 	function directionFor( el ) {

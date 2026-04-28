@@ -52,11 +52,11 @@ add_action( 'init', 'envosta_register_mobile_menu_styles' );
 if ( ! function_exists( 'envosta_overlay_block_styles' ) ) :
 	function envosta_overlay_block_styles( $block_name ) {
 		$styles = array(
-			'push-right' => __( 'Push Right', 'envosta' ),
-			'push-left'  => __( 'Push Left', 'envosta' ),
-			'slide-right'=> __( 'Slide Right', 'envosta' ),
-			'slide-left' => __( 'Slide Left', 'envosta' ),
-			'slide-down' => __( 'Slide Down', 'envosta' ),
+			'push-right'   => __( 'Push Right', 'envosta' ),
+			'push-left'    => __( 'Push Left', 'envosta' ),
+			'overlay-right'=> __( 'Overlay Right', 'envosta' ),
+			'overlay-left' => __( 'Overlay Left', 'envosta' ),
+			'slide-down'   => __( 'Slide Down', 'envosta' ),
 		);
 		foreach ( $styles as $name => $label ) {
 			register_block_style( $block_name, array(
@@ -178,7 +178,7 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 	function envosta_render_mobile_menu_drawer() {
 		if ( is_admin() ) return;
 
-		$default_direction = apply_filters( 'envosta_mobile_menu_default_direction', 'slide-left' );
+		$default_direction = apply_filters( 'envosta_mobile_menu_default_direction', 'overlay-left' );
 
 		// Mobile menu overlay.
 		envosta_render_overlay_drawer(
@@ -191,7 +191,7 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 
 		// Mini-cart overlay — only when WooCommerce is active.
 		if ( class_exists( 'WooCommerce' ) ) {
-			$cart_default_direction = apply_filters( 'envosta_mini_cart_default_direction', 'slide-left' );
+			$cart_default_direction = apply_filters( 'envosta_mini_cart_default_direction', 'overlay-left' );
 			envosta_render_overlay_drawer(
 				'mini-cart',
 				$cart_default_direction,

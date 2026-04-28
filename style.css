@@ -775,31 +775,31 @@ body.envosta-cart-open {
 
 /* -- Push Right: panel from left, canvas pushed right -------------------- */
 .envosta-mobile-menu-drawer.is-style-push-right .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-right .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-right .envosta-mobile-menu-drawer__panel {
 	left: 0;
 	right: auto;
 }
 .envosta-mobile-menu-drawer.is-style-push-right.is-open .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-right.is-open .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-right.is-open .envosta-mobile-menu-drawer__panel {
 	animation: envosta-slide-from-left-in 0.36s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 .envosta-mobile-menu-drawer.is-style-push-right.envosta-closing .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-right.envosta-closing .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-right.envosta-closing .envosta-mobile-menu-drawer__panel {
 	animation: envosta-slide-from-left-out 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
 /* -- Push Left: panel from right, canvas pushed left --------------------- */
 .envosta-mobile-menu-drawer.is-style-push-left .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-left .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-left .envosta-mobile-menu-drawer__panel {
 	right: 0;
 	left: auto;
 }
 .envosta-mobile-menu-drawer.is-style-push-left.is-open .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-left.is-open .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-left.is-open .envosta-mobile-menu-drawer__panel {
 	animation: envosta-slide-from-right-in 0.36s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 .envosta-mobile-menu-drawer.is-style-push-left.envosta-closing .envosta-mobile-menu-drawer__panel,
-.envosta-mobile-menu-drawer.is-style-slide-left.envosta-closing .envosta-mobile-menu-drawer__panel {
+.envosta-mobile-menu-drawer.is-style-overlay-left.envosta-closing .envosta-mobile-menu-drawer__panel {
 	animation: envosta-slide-from-right-out 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
