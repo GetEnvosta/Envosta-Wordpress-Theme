@@ -1076,3 +1076,24 @@ body.envosta-mobile-menu-open {
 	padding-top: env(safe-area-inset-top);
 	padding-bottom: env(safe-area-inset-bottom);
 }
+
+/* =========================================================================
+   Responsive Visibility Utilities
+
+   Three classes any block can opt into via "Advanced → Additional CSS class":
+     .hide-mobile   — hidden below 600px
+     .hide-tablet   — hidden between 600px and 959px
+     .hide-desktop  — hidden at 960px and up
+
+   Breakpoints match WP's own conventions (600 / 782 / 960). Use !important
+   so they win over block-level display values from the editor.
+   ========================================================================= */
+@media (max-width: 599px) {
+	.hide-mobile { display: none !important; }
+}
+@media (min-width: 600px) and (max-width: 959px) {
+	.hide-tablet { display: none !important; }
+}
+@media (min-width: 960px) {
+	.hide-desktop { display: none !important; }
+}
