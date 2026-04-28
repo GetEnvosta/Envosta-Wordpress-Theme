@@ -727,14 +727,23 @@ body.envosta-cart-open {
 .envosta-mobile-menu-drawer.size-75    { --envosta-overlay-size: 75%; }
 .envosta-mobile-menu-drawer.size-100   { --envosta-overlay-size: 100%; }
 
+/* Panel chrome — uses CSS variables so child themes / individual
+   drawers can override. The variables default to theme-1 / theme-4
+   so the panel has a sensible opaque background out of the box;
+   override --envosta-overlay-bg / --envosta-overlay-fg per drawer to
+   recolor without touching the rest of the visual style. */
+.envosta-mobile-menu-drawer {
+	--envosta-overlay-bg: var(--wp--preset--color--theme-1, #fff);
+	--envosta-overlay-fg: var(--wp--preset--color--theme-4, #1e1e1e);
+}
 .envosta-mobile-menu-drawer__panel {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	width: var(--envosta-overlay-size);
 	height: 100dvh;
-	background: var(--wp--preset--color--theme-1, #fff);
-	color: var(--wp--preset--color--theme-4, #1e1e1e);
+	background: var(--envosta-overlay-bg);
+	color: var(--envosta-overlay-fg);
 	overflow-y: auto;
 	overscroll-behavior: contain;
 	display: flex;
@@ -878,13 +887,27 @@ body.envosta-mobile-menu-open {
    template part so the default content always looks intentional, even
    if the author hasn't tweaked anything in the Site Editor yet. */
 
+/* The content wrapper and the template-part inside fill the panel
+   so any background / padding the author sets on the template
+   part's outer group covers the entire visible drawer area —
+   not just the height of its own content. */
 .envosta-mobile-menu-drawer__content {
 	width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
 }
-.envosta-mobile-menu-drawer__content > .wp-block-template-part,
+.envosta-mobile-menu-drawer__content > .wp-block-template-part {
+	width: 100%;
+	max-width: 100%;
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+}
 .envosta-mobile-menu-drawer__content > .wp-block-template-part > .wp-block-group {
 	width: 100%;
 	max-width: 100%;
+	flex: 1 1 auto;
 }
 
 /* Search field: full-width, generous height. */
