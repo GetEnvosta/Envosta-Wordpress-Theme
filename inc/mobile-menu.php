@@ -35,19 +35,19 @@ if ( ! function_exists( 'envosta_register_mobile_menu_styles' ) ) :
 		// instead of WP's native responsive overlay.
 		//
 		// To keep WP's NATIVE responsive overlay (just the nav links,
-		// no extra content), simply don't apply one of these styles —
-		// leave the navigation block on the default style.
+		// no extra content), simply leave the navigation block on the
+		// default style.
 		register_block_style( 'core/navigation', array(
 			'name'  => 'push',
-			'label' => __( 'Mobile Drawer: Push', 'envosta' ),
+			'label' => __( 'Push', 'envosta' ),
 		) );
 		register_block_style( 'core/navigation', array(
 			'name'  => 'slide-over',
-			'label' => __( 'Mobile Drawer: Slide-Over', 'envosta' ),
+			'label' => __( 'Slide Over', 'envosta' ),
 		) );
 		register_block_style( 'core/navigation', array(
 			'name'  => 'slide-down',
-			'label' => __( 'Mobile Drawer: Slide-Down', 'envosta' ),
+			'label' => __( 'Slide Down', 'envosta' ),
 		) );
 	}
 endif;
@@ -90,13 +90,30 @@ if ( ! function_exists( 'envosta_render_mobile_menu_drawer' ) ) :
 		if ( is_admin() ) return;
 
 		$default_direction = apply_filters( 'envosta_mobile_menu_default_direction', 'slide-over' );
-		$theme             = get_stylesheet();
 		$close_label       = __( 'Close menu', 'envosta' );
 
-		$inner = do_blocks( '<!-- wp:template-part {"slug":"mobile-menu","theme":"' . esc_attr( $theme ) . '","area":"overlays","tagName":"div"} /-->' );
+		// Resolve the mobile-menu template part the same way the
+		// woocommerce/mini-cart block resolves its template part —
+		// look up the template post (DB-edited overrides win) and
+		// fall back to the file shipped in /parts/. Then run its
+		// content through do_blocks so inner blocks render.
+		$inner    = '';
+		$template = null;
 
-		// If the part is missing (fresh install before the file is registered),
-		// fall back to a plain navigation block so the drawer still opens.
+		if ( function_exists( 'get_block_template' ) ) {
+			$template = get_block_template( get_stylesheet() . '//mobile-menu', 'wp_template_part' );
+		}
+		if ( ! $template && function_exists( 'get_block_file_template' ) ) {
+			$template = get_block_file_template( get_stylesheet() . '//mobile-menu', 'wp_template_part' );
+		}
+
+		if ( $template && ! empty( $template->content ) ) {
+			$inner = do_blocks( $template->content );
+		}
+
+		// Final safety net: if the part is missing entirely (fresh
+		// install before the file is registered), fall back to a
+		// plain navigation block so the drawer still opens.
 		if ( '' === trim( wp_strip_all_tags( $inner ) ) ) {
 			$inner = do_blocks( '<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->' );
 		}
