@@ -144,6 +144,9 @@ include dirname( __FILE__ ) . '/inc/block-defaults.php';
 // Mobile menu block styles: Push / Slide-Over / Slide-Down
 include dirname( __FILE__ ) . '/inc/mobile-menu.php';
 
+// Additional block styles (Grainy texture, etc.)
+include dirname( __FILE__ ) . '/inc/block-styles.php';
+
 // Server-side visibility utilities: .hide-logged-in / .hide-logged-out
 include dirname( __FILE__ ) . '/inc/visibility.php';
 
