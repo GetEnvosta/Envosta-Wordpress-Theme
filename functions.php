@@ -1,22 +1,20 @@
 <?php
 /**
- * Envosta functions and definitions
+ * Assembler functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Envosta
- * @since Envosta 1.0
+ * @package Assembler
+ * @since Assembler 1.0
  */
 
 declare( strict_types = 1 );
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-if ( ! function_exists( 'envosta_unregister_patterns' ) ) :
+if ( ! function_exists( 'assembler_unregister_patterns' ) ) :
 	/**
 	 * Unregister Jetpack patterns and core patterns bundled in WordPress.
 	 */
-	function envosta_unregister_patterns() {
+	function assembler_unregister_patterns() {
 		$pattern_names = array(
 			// Jetpack form patterns.
 			'contact-form',
@@ -46,27 +44,24 @@ if ( ! function_exists( 'envosta_unregister_patterns' ) ) :
 
 endif;
 
-if ( ! function_exists( 'envosta_setup' ) ) :
+if ( ! function_exists( 'assembler_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
-	 * @since Envosta 1.0
+	 * @since Assembler 1.0
 	 *
 	 * @return void
 	 */
-	function envosta_setup() {
-
-		// Make theme available for translation.
-		load_theme_textdomain( 'envosta', get_template_directory() . '/languages' );
+	function assembler_setup() {
 
 		// Enqueue editor styles.
 		add_editor_style( 'style.css' );
 		// Unregister Jetpack form patterns and core patterns bundled in WordPress.
 		// Simple sites
-		envosta_unregister_patterns();
+		assembler_unregister_patterns();
 		add_filter( 'wp_loaded', function () {
 			// Atomic sites
-			envosta_unregister_patterns();
+			assembler_unregister_patterns();
 		} );
 		// Remove theme support for the core and featured patterns coming from the Dotorg pattern directory.
 		remove_theme_support( 'core-block-patterns' );
@@ -74,198 +69,45 @@ if ( ! function_exists( 'envosta_setup' ) ) :
 
 endif;
 
-add_action( 'after_setup_theme', 'envosta_setup' );
+add_action( 'after_setup_theme', 'assembler_setup' );
 
-if ( ! function_exists( 'envosta_styles' ) ) :
+if ( ! function_exists( 'assembler_styles' ) ) :
 	/**
 	 * Enqueue styles.
 	 *
-	 * @since Envosta 1.0
+	 * @since Assembler 1.0
 	 *
 	 * @return void
 	 */
-	function envosta_styles() {
+	function assembler_styles() {
 
 		// Register theme stylesheet.
 		wp_register_style(
-			'envosta-style',
+			'assembler-style',
 			get_stylesheet_directory_uri() . '/style.css',
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_style( 'envosta-style' );
+		wp_enqueue_style( 'assembler-style' );
 
 	}
 
 endif;
 
-add_action( 'wp_enqueue_scripts', 'envosta_styles' );
+add_action( 'wp_enqueue_scripts', 'assembler_styles' );
 
-if ( ! function_exists( 'envosta_preload_fonts' ) ) :
-	/**
-	 * Preload the base Inter variable font to reduce FOUT.
-	 *
-	 * @since Envosta 1.0
-	 *
-	 * @return void
-	 */
-	function envosta_preload_fonts() {
-		$font_url = get_stylesheet_directory_uri() . '/assets/fonts/inter/InterVariable.woff2';
-		echo '<link rel="preload" href="' . esc_url( $font_url ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-	}
-
-endif;
-
-add_action( 'wp_head', 'envosta_preload_fonts', 1 );
-
-if ( ! function_exists( 'envosta_remove_upsells' ) ) :
-	/**
-	 * Remove upsells from product description.
-	 *
-	 * @since Envosta 1.0
-	 *
-	 * @return void
-	 */
-	function envosta_remove_upsells() {
-		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-	}
-
-endif;
-
-add_action( 'init', 'envosta_remove_upsells' );
-
-
-// Block default attributes — makes new core/group blocks default to
-// align="full" with constrained inner-block layout.
-include dirname( __FILE__ ) . '/inc/block-defaults.php';
-
-// Mobile menu block styles: Push / Slide-Over / Slide-Down
-include dirname( __FILE__ ) . '/inc/mobile-menu.php';
-
-// Additional block styles (Grainy texture, etc.)
-include dirname( __FILE__ ) . '/inc/block-styles.php';
-
-// Admin dashboard widget — lists all Envosta utility classes + block styles.
-include dirname( __FILE__ ) . '/inc/dashboard-widget.php';
-
-// Server-side visibility utilities: .hide-logged-in / .hide-logged-out
-include dirname( __FILE__ ) . '/inc/visibility.php';
-
-// Pattern categories (Site / Blog / WooCommerce) shown in the FSE sidebar.
-// WooCommerce only appears when WC is active.
-include dirname( __FILE__ ) . '/inc/pattern-categories.php';
-
-// Envosta Studio — WXR-driven site setup. When Tools → Import runs a WXR
-// exported by the Envosta Studio app, reads _envosta_* meta from the Home
-// page, applies the values to site options/theme-mods, then cleans up.
-include dirname( __FILE__ ) . '/inc/envosta-studio-setup.php';
-
-// Hide WooCommerce-only templates/parts/patterns from the Site Editor when
-// WooCommerce is not active. (The files still ship, so everything lights up
-// the moment WooCommerce is installed.)
-include dirname( __FILE__ ) . '/inc/hide-woo-templates.php';
-
-// WooCommerce integration — loads only when WooCommerce is active so the
-// theme auto-detects a store setup and ships the Shopify-style cart drawer,
-// product gallery features, and preset-ready templates the moment Woo is on.
-if ( ! function_exists( 'envosta_load_woocommerce_integration' ) ) :
-	function envosta_load_woocommerce_integration() {
-		if ( class_exists( 'WooCommerce' ) ) {
-			include dirname( __FILE__ ) . '/inc/woocommerce.php';
-		}
-	}
-endif;
-add_action( 'after_setup_theme', 'envosta_load_woocommerce_integration', 5 );
-
-/**
- * GitHub Theme Auto-Updater
+/* =============================================================================
+ * ENVOSTA ADDITIONS
+ * =============================================================================
  *
- * Checks GetEnvosta/Envosta-Theme releases for new versions.
- * Caches the check in a 12-hour transient to respect GitHub rate limits.
- */
-if ( ! function_exists( 'envosta_github_theme_update' ) ) {
-	function envosta_github_theme_update( $transient ) {
-		if ( empty( $transient->checked ) ) {
-			return $transient;
-		}
+ * Everything below this marker is Envosta-specific — not part of upstream
+ * Assembler. To minimize the future-port surface, all Envosta logic lives in
+ * inc/envosta-additions.php — this file just loads it.
+ *
+ * When pulling a future Assembler update: copy upstream's functions.php over
+ * this one, then re-append the single include statement below.
+ * ========================================================================== */
 
-		// The installed theme folder name (matches the top-level folder in
-		// the release zip: envosta/).
-		$theme_slug      = 'envosta';
-		$current_version = wp_get_theme( $theme_slug )->get( 'Version' );
-
-		if ( ! $current_version ) {
-			$current_version = wp_get_theme()->get( 'Version' );
-		}
-
-		$github_user = 'GetEnvosta';
-		$github_repo = 'Envosta-Theme';
-
-		$release_data = get_transient( 'envosta_update_check' );
-
-		if ( false === $release_data ) {
-			$response = wp_remote_get(
-				"https://api.github.com/repos/{$github_user}/{$github_repo}/releases/latest",
-				array(
-					'timeout'   => 10,
-					'sslverify' => true,
-					'headers'   => array(
-						'User-Agent' => 'Envosta-Theme/' . $current_version,
-					),
-				)
-			);
-
-			if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-				set_transient( 'envosta_update_check', 'error', 2 * HOUR_IN_SECONDS );
-				return $transient;
-			}
-
-			$release_data = json_decode( wp_remote_retrieve_body( $response ), true );
-			set_transient( 'envosta_update_check', $release_data, 12 * HOUR_IN_SECONDS );
-		}
-
-		if ( ! is_array( $release_data ) || empty( $release_data['tag_name'] ) ) {
-			return $transient;
-		}
-
-		$remote_version = preg_replace( '/^v/i', '', $release_data['tag_name'] );
-
-		if ( version_compare( $remote_version, $current_version, '>' ) ) {
-			$download_url = $release_data['zipball_url'] ?? '';
-
-			if ( ! empty( $release_data['assets'] ) && is_array( $release_data['assets'] ) ) {
-				foreach ( $release_data['assets'] as $asset ) {
-					if ( str_contains( $asset['name'], '.zip' ) ) {
-						$download_url = $asset['browser_download_url'];
-						break;
-					}
-				}
-			}
-
-			$transient->response[ $theme_slug ] = array(
-				'theme'       => $theme_slug,
-				'new_version' => $remote_version,
-				'url'         => $release_data['html_url'] ?? '',
-				'package'     => $download_url,
-			);
-		}
-
-		return $transient;
-	}
-}
-add_filter( 'pre_set_site_transient_update_themes', 'envosta_github_theme_update' );
-
-/**
- * Clear update transient when theme is updated.
- */
-add_action( 'upgrader_process_complete', function ( $upgrader, $options ) {
-	if ( 'update' === $options['action'] && 'theme' === $options['type'] ) {
-		delete_transient( 'envosta_update_check' );
-	}
-}, 10, 2 );
-
-// Envosta Studio WXR setup hook lives in inc/envosta-studio-setup.php
-// (included above). Keeping a single source of truth avoids fatal-redeclare
-// errors and keeps the Studio → WP provisioning flow in one testable module.
+require __DIR__ . '/inc/envosta-additions.php';

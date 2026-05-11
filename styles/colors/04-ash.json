@@ -84,9 +84,6 @@
                     "name": "Gradient 6"
                 }
             ]
-        },
-        "custom": {
-            "input-background": "oklch(from var(--wp--preset--color--theme-2) calc(l * 1.05) calc(c * 1.075) h)"
         }
     },
     "styles": {
@@ -105,6 +102,11 @@
                         "background": "var(--wp--preset--color--theme-3)",
                         "text": "var(--wp--preset--color--theme-1)"
                     }
+                }
+            },
+            "link": {
+                "color": {
+                    "text": "currentColor"
                 }
             }
         },
