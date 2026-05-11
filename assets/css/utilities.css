@@ -1,0 +1,71 @@
+/**
+ * Envosta — utility classes.
+ *
+ * Composable single-purpose classes that any block can opt into via
+ * the editor's "Advanced → Additional CSS class" field. Designed to
+ * be a small, learnable kit, not a Tailwind clone.
+ *
+ *   .hide-on-mobile        — hidden below 600px
+ *   .hide-on-tablet        — hidden 600–959px
+ *   .hide-on-desktop       — hidden at 960px and up
+ *   .hide-if-logged-in     — removed for authenticated users (PHP)
+ *   .hide-if-logged-out    — removed for guest users (PHP)
+ *   .show-if-logged-in     — visible only for authenticated users
+ *   .show-if-logged-out    — visible only for guest users
+ *   .grainy                — adds an SVG noise overlay to the block's
+ *                            background, like film grain
+ *
+ * @package Envosta
+ */
+
+/* -- Responsive visibility ----------------------------------------------- */
+@media (max-width: 599.98px) {
+	.hide-on-mobile { display: none !important; }
+}
+@media (min-width: 600px) and (max-width: 959.98px) {
+	.hide-on-tablet { display: none !important; }
+}
+@media (min-width: 960px) {
+	.hide-on-desktop { display: none !important; }
+}
+
+/* -- Auth-state visibility (visible variants) ----------------------------
+   The .hide-if-* variants are handled server-side in
+   inc/utilities.php — those blocks are removed entirely from the
+   render output. The .show-if-* variants below use a body class
+   (envosta-logged-in / envosta-logged-out) added by the same file. */
+body.envosta-logged-in .show-if-logged-out { display: none !important; }
+body.envosta-logged-out .show-if-logged-in { display: none !important; }
+
+/* -- Grainy texture ------------------------------------------------------
+   Adds a film-grain noise layer over the block's existing background.
+   Uses a base64-encoded SVG filter so no extra image is shipped.
+   The block must establish its own stacking context (e.g., have a
+   background color, padding, or relative positioning) for the layer
+   to render correctly. */
+.grainy {
+	position: relative;
+	isolation: isolate;
+}
+
+.grainy::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	opacity: 0.32;
+	mix-blend-mode: multiply;
+	background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+	background-size: 200px 200px;
+}
+
+/* Push the block's own content above the grain layer. */
+.grainy > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Intensity modifiers — compose with .grainy on the same element. */
+.grainy.grain-subtle::after { opacity: 0.18; }
+.grainy.grain-strong::after { opacity: 0.55; }
