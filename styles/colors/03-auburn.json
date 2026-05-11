@@ -17,29 +17,24 @@
         "color": {
             "palette": [
                 {
-                    "color": "#F7F3EC",
+                    "color": "#FFFFFF",
                     "name": "Color 1",
                     "slug": "theme-1"
                 },
                 {
-                    "color": "#36302A",
+                    "color": "#000000",
                     "name": "Color 2",
                     "slug": "theme-2"
                 },
                 {
-                    "color": "#ECE4DA",
+                    "color": "#AFC4D0",
                     "name": "Color 3",
                     "slug": "theme-3"
                 },
                 {
-                    "color": "#B9A58F",
+                    "color": "#A04E00",
                     "name": "Color 4",
                     "slug": "theme-4"
-                },
-                {
-                    "color": "#574C40",
-                    "name": "Color 5",
-                    "slug": "theme-5"
                 }
             ],
             "duotone": [
@@ -53,7 +48,7 @@
                 },
                 {
                     "colors": [
-                        "#573426",
+                        "#A04E00",
                         "#FFFFFF"
                     ],
                     "slug": "duotone-2",
@@ -82,44 +77,21 @@
                     "name": "Gradient 3"
                 },
                 {
-                    "slug": "gradient-1-5",
-                    "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-1) 0%, var(--wp--preset--color--theme-5) 100%)",
-                    "name": "Gradient 4"
-                },
-                {
                     "slug": "gradient-2-3",
                     "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-2) 0%, var(--wp--preset--color--theme-3) 100%)",
-                    "name": "Gradient 5"
+                    "name": "Gradient 4"
                 },
                 {
                     "slug": "gradient-2-4",
                     "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-2) 0%, var(--wp--preset--color--theme-4) 100%)",
-                    "name": "Gradient 6"
-                },
-                {
-                    "slug": "gradient-2-5",
-                    "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-2) 0%, var(--wp--preset--color--theme-5) 100%)",
-                    "name": "Gradient 7"
+                    "name": "Gradient 5"
                 },
                 {
                     "slug": "gradient-3-4",
                     "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-3) 0%, var(--wp--preset--color--theme-4) 100%)",
-                    "name": "Gradient 8"
-                },
-                {
-                    "slug": "gradient-3-5",
-                    "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-3) 0%, var(--wp--preset--color--theme-5) 100%)",
-                    "name": "Gradient 9"
-                },
-                {
-                    "slug": "gradient-4-5",
-                    "gradient": "linear-gradient(to bottom, var(--wp--preset--color--theme-4) 0%, var(--wp--preset--color--theme-5) 100%)",
-                    "name": "Gradient 10"
+                    "name": "Gradient 6"
                 }
             ]
-        },
-        "custom": {
-            "input-background": "oklch(from var(--wp--preset--color--theme-1) calc(l * 1.05) calc(c * 1.075) h)"
         }
     },
     "styles": {
@@ -137,14 +109,19 @@
         "elements": {
             "button": {
                 "color": {
-                    "background": "var(--wp--preset--color--theme-2)",
+                    "background": "var(--wp--preset--color--theme-4)",
                     "text": "var(--wp--preset--color--theme-1)"
                 },
                 ":hover": {
                     "color": {
-                        "background": "color-mix(in srgb, var(--wp--preset--color--theme-2) 85%, #000)",
+                        "background": "color-mix(in srgb, var(--wp--preset--color--theme-4) 85%, #000)",
                         "text": "var(--wp--preset--color--theme-1)"
                     }
+                }
+            },
+            "link": {
+                "color": {
+                    "text": "currentColor"
                 }
             }
         },
@@ -169,21 +146,26 @@
                 "elements": {
                     "button": {
                         "color": {
-                            "background": "var(--wp--preset--color--theme-2)",
+                            "background": "var(--wp--preset--color--theme-4)",
                             "text": "var(--wp--preset--color--theme-1)"
                         },
                         ":hover": {
                             "color": {
-                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-2) 85%, #000)",
+                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-4) 85%, #000)",
                                 "text": "var(--wp--preset--color--theme-1)"
                             }
+                        }
+                    },
+                    "link": {
+                        "color": {
+                            "text": "currentColor"
                         }
                     }
                 }
             },
             "section-2": {
                 "color": {
-                    "background": "var(--wp--preset--color--theme-5)",
+                    "background": "var(--wp--preset--color--theme-4)",
                     "text": "var(--wp--preset--color--theme-1)"
                 },
                 "blocks": {
@@ -202,13 +184,18 @@
                     "button": {
                         "color": {
                             "background": "var(--wp--preset--color--theme-1)",
-                            "text": "var(--wp--preset--color--theme-2)"
+                            "text": "var(--wp--preset--color--theme-4)"
                         },
                         ":hover": {
                             "color": {
-                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-1) 85%, #000)",
-                                "text": "var(--wp--preset--color--theme-2)"
+                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-1) 90%, transparent)",
+                                "text": "var(--wp--preset--color--theme-4)"
                             }
+                        }
+                    },
+                    "link": {
+                        "color": {
+                            "text": "currentColor"
                         }
                     }
                 }
@@ -221,7 +208,7 @@
                 "blocks": {
                     "core/separator": {
                         "color": {
-                            "text": "color-mix(in srgb, currentColor 65%, transparent)"
+                            "text": "var(--wp--preset--color--theme-4)"
                         }
                     },
                     "core/post-date": {
@@ -233,14 +220,19 @@
                 "elements": {
                     "button": {
                         "color": {
-                            "background": "var(--wp--preset--color--theme-1)",
-                            "text": "var(--wp--preset--color--theme-2)"
+                            "background": "var(--wp--preset--color--theme-4)",
+                            "text": "var(--wp--preset--color--theme-1)"
                         },
                         ":hover": {
                             "color": {
-                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-1) 85%, #000)",
-                                "text": "var(--wp--preset--color--theme-2)"
+                                "background": "color-mix(in srgb, var(--wp--preset--color--theme-4) 85%, #000)",
+                                "text": "var(--wp--preset--color--theme-1)"
                             }
+                        }
+                    },
+                    "link": {
+                        "color": {
+                            "text": "currentColor"
                         }
                     }
                 }

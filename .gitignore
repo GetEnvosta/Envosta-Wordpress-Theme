@@ -1,6 +1,29 @@
-.claude/
+# Ignoring assembler colors and typesets repo
+/assembler-colors-typesets
+
+# ----------------------------------------------------------------------------
+# ENVOSTA ADDITIONS
+# ----------------------------------------------------------------------------
+
+# Build artifacts (distribution zips never live in the repo)
+envosta.zip
+*.zip
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Node / package metadata (the theme itself has no build step)
 node_modules/
 package.json
 package-lock.json
-generate-screenshot.mjs
-envosta.zip
+yarn.lock
+
+# Local PHP scratch
+*.log
+.phpcs.cache

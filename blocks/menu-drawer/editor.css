@@ -1,0 +1,19 @@
+/**
+ * Envosta — Menu Drawer block editor-only styles.
+ *
+ * The drawer panel is hidden in the editor preview — only the trigger
+ * button is shown, so authors can place the trigger in their layout
+ * without the drawer overlay obscuring the editor canvas.
+ */
+
+.editor-styles-wrapper .envosta-menu-drawer__panel-wrap {
+	display: none;
+}
+
+.editor-styles-wrapper .envosta-menu-drawer__trigger {
+	pointer-events: none;
+}
+
+.envosta-menu-drawer__icon-preview svg {
+	display: block;
+}
