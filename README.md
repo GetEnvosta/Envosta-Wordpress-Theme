@@ -31,12 +31,13 @@ This is the single source of truth for "what's mine vs. what came from Assembler
 
 ### ⚠️ Files I MODIFY on top of Assembler — touch with care
 
-Only two files are modified relative to upstream. Both modifications are additive and localized.
+Three files are modified relative to upstream. All modifications are additive and localized.
 
 | Path | What's modified | Where the modification lives |
 |---|---|---|
 | `style.css` | Theme header comment block replaced with Envosta header (theme name, version 1.0.0, description, etc.). | Lines 1–15 (the opening `/* … */` comment). The CSS below the header is unmodified Assembler. |
 | `functions.php` | Single `require __DIR__ . '/inc/envosta-additions.php';` appended after the last Assembler line, under a clearly marked `ENVOSTA ADDITIONS` block. | Final ~15 lines of the file. Everything above the marker is unmodified Assembler. |
+| `screenshot.png` | Replaced with Envosta-branded screenshot. | Whole file. |
 
 ### 🚫 Files I DO NOT TOUCH — pristine Assembler
 
