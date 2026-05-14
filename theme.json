@@ -377,6 +377,11 @@
             "area": "footer",
             "name": "footer",
             "title": "Footer"
+        },
+        {
+            "area": "menu-drawer",
+            "name": "menu-drawer",
+            "title": "Menu Drawer"
         }
     ],
     "version": 3,
