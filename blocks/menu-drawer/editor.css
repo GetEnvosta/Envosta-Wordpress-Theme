@@ -6,8 +6,13 @@
  * without the drawer overlay obscuring the editor canvas.
  */
 
-.editor-styles-wrapper .envosta-menu-drawer__panel-wrap {
-	display: none;
+/* Belt + suspenders selectors so the drawer never escapes into the
+   editor canvas regardless of which canvas wrapper WordPress uses
+   for the active edit context. */
+.editor-styles-wrapper .envosta-menu-drawer__panel-wrap,
+.block-editor-block-list__layout .envosta-menu-drawer__panel-wrap,
+.editor-styles-wrapper [data-type="envosta/menu-drawer"] .envosta-menu-drawer__panel-wrap {
+	display: none !important;
 }
 
 .editor-styles-wrapper .envosta-menu-drawer__trigger {
