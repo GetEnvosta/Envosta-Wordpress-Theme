@@ -1,10 +1,15 @@
 /**
  * Envosta — Menu Drawer block (frontend styles).
  *
- * Two elements: a trigger button that can sit anywhere in the layout,
- * and a drawer panel that slides in from the right when toggled open.
- * Drawer position / direction can be customized in a child theme by
- * overriding the transform on .envosta-menu-drawer__panel.
+ * The panel is a thin positioning shell — its background, padding,
+ * width, and color all come from the menu-drawer TEMPLATE PART's
+ * outer Group block. That keeps the drawer's look entirely editable
+ * in the Site Editor (Patterns → Menu Drawer) and adopts whatever
+ * theme color variation is active. Same architectural pattern WC
+ * uses for its mini-cart-contents block.
+ *
+ * Animation timing (0.3s ease-in-out) matches WooCommerce's
+ * mini-cart drawer so the two drawers feel like one system.
  */
 
 /* -- Trigger button ------------------------------------------------------ */
@@ -42,18 +47,22 @@
 	inset: 0;
 	z-index: 99999;
 	display: block;
-	pointer-events: auto;
+	pointer-events: none;
 }
 
 .envosta-menu-drawer__panel-wrap[hidden] {
 	display: none !important;
 }
 
+.envosta-menu-drawer__panel-wrap.is-open {
+	pointer-events: auto;
+}
+
 .envosta-menu-drawer__backdrop {
 	position: absolute;
 	inset: 0;
 	background: rgba(0, 0, 0, 0);
-	transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: background-color 0.3s ease-in-out;
 }
 
 .envosta-menu-drawer__panel-wrap.is-open .envosta-menu-drawer__backdrop {
@@ -65,9 +74,7 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: min(88vw, 420px);
-	background: var(--wp--preset--color--base, #fff);
-	color: var(--wp--preset--color--contrast, #1e1e1e);
+	width: min(90vw, 480px);
 	box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
 	overflow-y: auto;
 	overscroll-behavior: contain;
@@ -75,7 +82,7 @@
 	flex-direction: column;
 	outline: none;
 	transform: translateX(100%);
-	transition: transform 0.36s cubic-bezier(0.32, 0.72, 0, 1);
+	transition: transform 0.3s ease-in-out;
 	padding-top: env(safe-area-inset-top);
 	padding-bottom: env(safe-area-inset-bottom);
 }
@@ -107,12 +114,29 @@
 	background: rgba(0, 0, 0, 0.06);
 }
 
+/* -- Content: let the template part own all the chrome ------------------- */
 .envosta-menu-drawer__content {
 	flex: 1 1 auto;
 	min-height: 0;
 	display: flex;
 	flex-direction: column;
-	padding: 4rem 1.5rem 2rem;
+}
+
+/* Make the template part's outer group fill the panel — so its
+   background-color (set in Site Editor) covers the entire drawer
+   instead of just the area its content takes. */
+.envosta-menu-drawer__content > .wp-block-template-part {
+	flex: 1 1 auto;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.envosta-menu-drawer__content > .wp-block-template-part > .wp-block-group {
+	flex: 1 1 auto;
+	min-height: 100%;
+	width: 100%;
 }
 
 /* -- Body scroll lock while a drawer is open ----------------------------- */
@@ -123,9 +147,7 @@ body.envosta-drawer-open {
 
 /* -- Reduced motion ------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-	.envosta-menu-drawer__panel {
-		transition: none !important;
-	}
+	.envosta-menu-drawer__panel,
 	.envosta-menu-drawer__backdrop {
 		transition: none !important;
 	}
