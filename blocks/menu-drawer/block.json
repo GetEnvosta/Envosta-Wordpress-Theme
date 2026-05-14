@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "envosta/menu-drawer",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"title": "Menu Drawer",
 	"category": "design",
 	"description": "A trigger button that slides open an editable drawer template part. Mirrors the WooCommerce Mini-Cart pattern — drop the block into a header, pick an icon, and the drawer content lives in the Menu Drawer template part.",

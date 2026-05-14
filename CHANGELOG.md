@@ -4,6 +4,16 @@ All notable changes to Envosta Parent are tracked here. The format follows [Keep
 
 ---
 
+## [1.0.1] — 2026-05-11
+
+- **Editor compatibility fix:** switched `block.json`'s `editorScriptModule` to the classic `editorScript`. The modern Script Modules path for editor scripts didn't load reliably across all WP 6.5–6.6 versions, leaving the Menu Drawer block falling back to its server render in the canvas. The frontend `view.js` is still a Script Module (Interactivity API).
+- **Drawer UX parity with WC Mini Cart:** matched WC's 0.3s ease-in-out animation timing, expanded panel width to `min(90vw, 480px)`, and moved all visual chrome (bg, padding, content width) from the panel CSS onto the menu-drawer template part's outer Group so authors edit it at drawer width with the theme's color variation applied.
+- **Default `parts/header.html`** replaced with the Envosta canonical header layout: site-logo + title (left, desktop), navigation (center, desktop), WC mini-cart + menu-drawer trigger (right, with the drawer trigger mobile-only). Uses the `hide-*` visibility utilities.
+- **Default header.html portability:** dropped the hard-coded `{"ref":9}` from the navigation block (fresh installs now render WP's standard nav placeholder), and swapped site-title's textColor from the old `theme-5` slug to Assembler's canonical `contrast` slug so it renders correctly on all default and variation palettes.
+- **Menu Drawer template-part area** now properly registered in `theme.json`'s `templateParts` array. Without this declaration WP was assigning the part to "uncategorized" regardless of our PHP filter. `theme.json` is now in the README's MODIFY list (structural change, not a design-token edit).
+- **Envosta screenshot** restored — the v1.0.0 reset accidentally pulled Assembler's stock screenshot.
+- **Bumped version 1.0.0 → 1.0.1** so cached editor JS (`edit.js?ver=1.0.0`) is invalidated for installs upgrading from the brief snapshot.
+
 ## [1.0.0] — 2026-05-11
 
 First clean baseline. Built as a thin Envosta-specific layer on top of upstream Assembler.
