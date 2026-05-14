@@ -31,7 +31,7 @@ This is the single source of truth for "what's mine vs. what came from Assembler
 
 ### ⚠️ Files I MODIFY on top of Assembler — touch with care
 
-Four files are modified relative to upstream. All modifications are additive and localized.
+Five files are modified relative to upstream. All modifications are additive and localized.
 
 | Path | What's modified | Where the modification lives |
 |---|---|---|
@@ -39,6 +39,7 @@ Four files are modified relative to upstream. All modifications are additive and
 | `functions.php` | Single `require __DIR__ . '/inc/envosta-additions.php';` appended after the last Assembler line, under a clearly marked `ENVOSTA ADDITIONS` block. | Final ~15 lines of the file. Everything above the marker is unmodified Assembler. |
 | `screenshot.png` | Replaced with Envosta-branded screenshot. | Whole file. |
 | `theme.json` | One entry appended to `templateParts` array assigning `parts/menu-drawer.html` to the custom `menu-drawer` area. Structural (template-part registration), not a design-token change — design tokens still belong in child themes. | Inside `templateParts`, single object added after the existing `header` / `footer` entries. |
+| `parts/header.html` | Replaced with the Envosta default header layout — site logo + title (left), navigation (center, desktop only), WC mini-cart + menu-drawer trigger (right, mobile only). Uses our visibility utility classes and the `envosta/menu-drawer` block. | Whole file. |
 
 ### 🚫 Files I DO NOT TOUCH — pristine Assembler
 
